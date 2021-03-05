@@ -153,11 +153,16 @@ body {
 
 .activity200-dropzone-label--item {
   width: 200px;
-  margin: auto 45px;  
+  margin: auto 43px;
   text-align: center;
   color: #666;
   font-size: 21px;
   font-weight: 700;
+  margin-top: 10px;
+}
+
+.activity200-dropzone-label--item-double .activity200-dropzone-label--item-container {
+  width: 500px;
 }
 
 .activity200 .activity200-cycle--item-container {
