@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/activity.css">
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <title>Hello, world!</title>
+</head>
+
+<body>
+
+  <header class="header-mep">
+    <div class="header-mep-icon"><img src="images/logo-mep.svg" alt=""></div>
+    <div class="header-mep-icon"><img src="images/logo-politica-eds.png" alt=""></div>
+  </header>
+  <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-wrap="false">
+    <div class="carousel-inner" id="app-4">
+
+      <div class="carousel-item px-4" :class="{'active': index === 0}" v-for="(slide, index) in intros" :key="index">
+        <div class="row">
+          <div class="col-12">
+            <div class="container-slide-head">
+              <h2 v-if="slide.title">{{slide.title}}</h2>
+            </div>
+          </div>
+          <div class="container-slide col">
+            <div class="row">
+              <div class="col-6">
+                <div class="container-slide-image">
+                  <img :src="slide.image" class="w-100">
+                </div>
+              </div>
+              <div class="col">
+                <div class="container-slide-text d-flex h-100">
+                  <p v-for="(string, indexStrings) in slide.strings" :key="indexStrings">{{string}}</p>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+          <div class="col-12">
+            <button class="float-right btn activity-control-next" href="#carouselExampleControls" role="button"
+              data-slide="next">
+              Siguiente
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item px-4" v-for="(slide, index) in slides" :key="index">
+        <div class="row no-gutters d-flex flex-column-reverse flex-lg-row ">
+          <div class="col-lg-3 ">
+            <div class="activity-grid">
+              <div v-for="(value, indexOptions) in slide.options" :key="indexOptions" class="activity-grid-item">
+                <div class="activity-grid-item-element" ref="option" @click="onClickGridCard(index, indexOptions)"
+                  draggable @dragstart='startDrag($event, index, indexOptions)'>
+                  <img :src="value.image" alt="">
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-9">
+            <h2 class="mb-0 carousel-item-answer" style="background-color: #0071BC;">{{slide.title}}</h2>
+            <div class="carousel-item-image">
+              <img :src="slide.image" @drop='onDrop($event, 1)' @dragover.prevent @dragenter.prevent>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item px-4">
+        <div class="row">
+          <div class="col-12">
+            <div class="container-slide-head"></div>
+          </div>
+          <div class="container-slide col">
+            <div class="row">
+              <div class="col">
+                <div class="container-slide-image">
+                  <img src="images/lab1/Todo.png" class="w-100">
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-12">
+            <button class="mx-auto d-block btn activity-control-next" href="#carouselExampleControls" @click="restart()"
+              role="button">
+              Volver a empezar
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade bd-example-modal-lg feedback-modal" tabindex="-1" role="dialog" id="feedback-modal" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-centered">
+          <div class="modal-content">
+            <h3
+              class="feedback-modal-title" 
+              :class="[{'feedback-modal-title-correct': isCorrectAnswer, 'feedback-modal-title-incorrect': !isCorrectAnswer}]"><span>{{feedbackTitle}}</span></h3>
+              
+              <p>{{feedback}}</p>
+            <button 
+            class="feedback-modal-button" 
+            :class="[{'feedback-modal-button-correct': isCorrectAnswer, 'feedback-modal-button-incorrect': !isCorrectAnswer}]" @click="isCorrectAnswer ? nextSlide() : closeModal()">{{isCorrectAnswer ? 'Continuar' : 'Intentar otra vez'}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/conf/100_ACT/activity101.js"></script>
+  <script>
+    var app4 = new Vue({
+      el: '#app-4',
+      data: {
+        slides: activity101.slides,
+        intros: activity101.introSlides,
+        currentSlide: 0,
+        introAudios: [],
+        completed: false,
+        feedback: '',
+        feedbackTitle: '',
+        isCorrectAnswer: false,
+      },
+      mounted() {
+        let audio = new Audio(this.intros[this.currentSlide].audio);
+        audio.play();
+
+        $('.carousel').on('slid.bs.carousel', (evt) => {
+          audio = new Audio(this.intros[evt.to].audio);
+          audio.play();
+        });
+      },
+      methods: {
+        startDrag: (evt, index, indexOptions) => {
+          evt.dataTransfer.dropEffect = 'move';
+          evt.dataTransfer.effectAllowed = 'move';
+          evt.dataTransfer.setData('option', JSON.stringify({ slide: index, option: indexOptions }));
+        },
+        onDrop(evt, list) {
+          const option = JSON.parse(evt.dataTransfer.getData('option'));
+          this.validateAnswer(option.slide, option.option);
+        },
+        validateAnswer(index, indexOptions) {
+          this.$refs.option[index].classList.remove('activity-grid-item-element-valid', 'activity-grid-item-element-invalid');
+          let classToAdd = 'activity-grid-item-element-invalid';
+          let audio = new Audio(this.slides[index].options[indexOptions].audio);
+          this.feedbackTitle = "Incorrecto!";
+          this.isCorrectAnswer = false;
+          this.feedback = this.slides[index].options[indexOptions].feedback;
+          const isValid = this.slides[index].options[indexOptions].isCorrect;
+          if (isValid) {
+            this.isCorrectAnswer = true;
+            this.feedbackTitle = "Correcto!";  
+            classToAdd = 'activity-grid-item-element-valid';
+          }
+
+          audio.play();
+          this.$refs.option[(index * 3) + indexOptions].classList.add(classToAdd);
+          $('#feedback-modal').modal('show');
+        },
+        onClickGridCard(index, indexOptions) {
+          this.validateAnswer(index, indexOptions);
+        },
+        restart() {
+          $('.carousel').carousel(0);
+        },
+        closeModal() {
+          $('#feedback-modal').modal('hide');
+        },
+        nextSlide(){
+          $('#feedback-modal').modal('hide');
+          $('.carousel').carousel('next');
+        }
+      },
+    });
+
+    function prevSlide() {
+
+    };
+    function nextSlide() {
+      $('.carousel').carousel('next');
+    }
+
+  </script>
+
+
+</body>
+
+</html>

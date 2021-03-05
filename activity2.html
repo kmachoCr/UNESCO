@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/activity2.css">
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <title>Hello, world!</title>
+</head>
+
+<body>
+  
+  <div id="app-2" class="activity200">
+    <div class="container" v-show="!hideMenu">
+      <div class="row">
+        <div class="col">
+          <div class="text-center">
+
+            <h2>¡Exploremos los ciclos de vida de algunos seres vivos!</h2>
+            <h4>El ciclo de vida es el proceso natural por el que atraviesan todos los seres vivos desde que nacen hasta
+              que mueren. Está divido en 4 etapas principales: nacimiento, crecimiento y desarrollo, reproducción y
+              muerte.</h4>
+            <p>Seleccioná un ser para conocer su ciclo de vida:</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col activity200-menu" >
+          <div class="activity200-menu--item" v-for="(cycle, index) in cycles" :key="index">
+            <div class="activity200-menu--item-container" @click="selectCycle(index)">
+              <img :src="cycle.image" alt="">
+              <p>{{cycle.name}}</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container"  v-show="hideMenu">
+      <div class="row">
+        <div class="col">
+          <div class="text-center">
+            <button @click="cleanActivity(true)">Regresar</button>
+            <h2>{{selectedCycle.title}}</h2>
+            <h4>¿Cuál es el ciclo de vida de {{selectedCycle.title}}? </h4>
+            <p>Ordená las imágenes según el orden correspondiente:</p>
+          </div>
+        </div>
+      </div>
+      <div class="">
+        <div class="activity200-cycle">
+          <div class="activity200-cycle--item" :class="`activity200-cycle--item-${selectedCycle.code}-${cycle.step}`" v-for="(cycle, index) in selectedCycle.cycle" :key="index">
+            <div class="activity200-cycle--item-container" draggable @dragstart='startDrag($event, `${selectedCycle.code}-${cycle.step}`, index)'>
+              <img :src="cycle.image" v-if="!cycle.placed" alt="">
+            </div>
+
+          </div>
+        </div>
+        <div class="activity200-dropzone">
+          <div class="activity200-dropzone--item" :class="`activity200-dropzone--item-${selectedCycle.code}-${index+1}`" v-for="(cycle, index) in selectedCycle.cycle" :key="index">
+            <div class="activity200-dropzone--item-container" @drop='onDrop($event, selectedCycle.code, `${selectedCycle.code}-${index+1}`)' @dragover.prevent
+              @dragenter.prevent>
+              <img :src="cycle.image" v-if="orderedCycle[index].placed" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="modalTest" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-centered">
+          <div class="modal-content">
+
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-12">
+                  <p>Has completado el ciclo de vida de {{selectedCycle.title}}.</p>
+                </div>
+                <div class="col d-flex justify-content-center">
+                  <button type="button" class="btn btn-primary" @click="cleanActivity()">Volver a completar</button>
+                </div>
+                <div class="col d-flex justify-content-center">
+                  <button type="button" class="btn btn-primary" @click="cleanActivity(true)">Explorar otro ciclo de
+                    vida</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="js/conf/200_ACT/activity200.js"></script>
+  <script>
+    var app2 = new Vue({
+      el: '#app-2',
+      data: {
+        cycles: activity2.cycles,
+        selectedCycle: {},
+        orderedCycle: {},
+        hideMenu: false,
+      },
+      mounted() {
+
+      },
+      watch: {
+        selectedCycle: {
+          // This will let Vue know to look inside the array
+          deep: true,
+
+          // We have to move our method to a handler field
+          handler(value) {
+            this.hideMenu = this.selectedCycle.cycle && this.selectedCycle.cycle.length > 0;
+          }
+        }
+      },
+      methods: {
+        startDrag: (evt, code) => {
+          evt.dataTransfer.dropEffect = 'move';
+          evt.dataTransfer.effectAllowed = 'move';
+          evt.dataTransfer.setData('code', code);
+        },
+        onDrop(evt, cycleCode, dropCode) {
+          const dragCode = evt.dataTransfer.getData('code');
+          if (dropCode === dragCode) {
+            const index = this.selectedCycle.cycle.findIndex(element =>  `${cycleCode}-${element.step}` === dropCode);
+            this.selectedCycle.cycle[index].placed = true;
+            this.$forceUpdate();
+          }
+
+          if (this.selectedCycle.cycle.every(elem => elem.placed)) {
+            $('#modalTest').modal('show');
+          }
+        },
+        selectCycle(index) {
+          this.selectedCycle = this.cycles[index];
+
+          this.orderedCycle = [...this.selectedCycle.cycle].sort(function (a, b) {
+            if (a.step > b.step) {
+              return 1;
+            }
+            if (a.step < b.step) {
+              return -1;
+            }
+            // a must be equal to b
+            return 0;
+          });
+          this.$forceUpdate();
+
+        },
+        cleanActivity(goBack) {
+
+          $('#modalTest').modal('hide');
+          this.selectedCycle.cycle.forEach((element, index) => {
+            element.placed = false;
+
+          });
+          if(goBack){
+            this.selectedCycle = {};
+          }
+          this.$forceUpdate();
+
+
+        }
+      },
+    });
+  </script>
+</body>
+
+</html>
