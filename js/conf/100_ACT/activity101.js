@@ -49,14 +49,14 @@ const activity101 = {
           name: '',
           image: '../images/lab1/lab01-icon-agua.svg',
           isCorrect: true,
-          feedback: '¡Correcto! El agua es un elemento natural e inerte. No tiene vida pero ayuda a la vida.',
+          feedback: 'El agua es un elemento natural e inerte. No tiene vida pero ayuda a la vida.',
           audio: '../audios/01-feedback-1-Agua.mp3',
         },
         {
           name: '',
           image: '../images/lab1/lab01-icon-arbol.svg',
           isCorrect: false,
-          feedback: '¡Incorrecto! Los árboles están vivos y reaccionan, por ejemplo sus raíces crecen hacia dónde pueden encontrar agua.',
+          feedback: 'Los árboles están vivos y reaccionan, por ejemplo sus raíces crecen hacia dónde pueden encontrar agua.',
           audio: '../audios/01-feedback-1-arbol.mp3',
         },
       ],
@@ -77,7 +77,7 @@ const activity101 = {
           name: 'Delfín',
           image: '../images/lab1/lab01-icon-delfin.svg',
           isCorrect: true,
-          feedback: '¡Correcto! Sabías que los delfines respiran por los pulmones y no por las branquias como lo hacen otros seres que viven en el mar. ',
+          feedback: 'Sabías que los delfines respiran por los pulmones y no por las branquias como lo hacen otros seres que viven en el mar. ',
           audio: '../audios/02-feedback-delfin.mp3',
         },
         {
@@ -118,7 +118,7 @@ const activity101 = {
       ],
     },
     {
-      title: 'Arrastrá al paisaje un ser que crece.',
+      title: 'Seleccioná un ser que crece.',
       image: "../images/lab1/lab01-landscape-mono.png",
       audio: '../audios/04-ser-que-crece.mp3',
       options: [
@@ -140,7 +140,7 @@ const activity101 = {
           name: 'Árbol',
           image: '../images/lab1/lab01-icon-arbol.svg',
           isCorrect: true,
-          feedback: '¡Correcto! los árboles respiran mediante sus hojas y producen su propio alimento al absorber nutrientes del suelo por sus raíces.',
+          feedback: 'Los árboles respiran mediante sus hojas y producen su propio alimento al absorber nutrientes del suelo por sus raíces.',
           audio: '../audios/04-feedback-arbol.mp3',
         },
       ],
@@ -202,7 +202,7 @@ const activity101 = {
       ],
     },
     {
-      title: 'Volvamos nuestra mirada para arriba, ¿cuál es un elemento inerte que podemos ver en el cielo?',
+      title: 'Volvamos nuestra mirada para arriba, ¿cuál es un elemento inerte natural que podemos ver en el cielo?',
       image: "../images/lab1/lab01-landscape-tortuga.png",
       audio: '../audios/07-elemento-inerte-natural-cielo.mp3',
       options: [

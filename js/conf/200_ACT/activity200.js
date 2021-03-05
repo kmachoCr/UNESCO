@@ -2,7 +2,7 @@ const activity2 = {
   cycles: [
     {
       name: 'Gallina',
-      title: 'La Gallina',
+      title: 'La gallina',
       image: '../images/Lab2/lab02-card-gallina.svg',
       code: 'gallina',
       cycle: [
@@ -112,82 +112,6 @@ const activity2 = {
       name: 'Arbol',
       title: 'Árbol de naranja',
       image: '../images/Lab2/lab02-card-arbol.svg',
-      code: 'mariposa',
-      cycle: [
-        {
-          step: 1,
-          name: 'Nace',
-          code: 'ma-1',
-          image: '../images/default.png',
-        },
-        {
-          step: 2,
-          name: 'Crece y se desarrolla',
-          code: 'ma-2',
-          image: '../images/default.png',
-        },
-        {
-          step: 3,
-          name: '',
-          code: 'ma-3',
-          image: '../images/default.png',
-        },
-        {
-          step: 4,
-          name: 'Se reproduce',
-          code: 'ma-4 ',
-          image: '../images/default.png',
-        },
-        {
-          step: 5,
-          name: 'Muere',
-          code: 'ma-5 ',
-          image: '../images/default.png',
-        },
-      ],
-    },
-    {
-      name: 'Rana',
-      title: 'La Rana',
-      image: '../images/Lab2/lab02-card-rana.svg',
-      code: 'mariposa',
-      cycle: [
-        {
-          step: 1,
-          name: 'Nace',
-          code: 'ma-1',
-          image: '../images/default.png',
-        },
-        {
-          step: 2,
-          name: 'Crece y se desarrolla',
-          code: 'ma-2',
-          image: '../images/default.png',
-        },
-        {
-          step: 3,
-          name: '',
-          code: 'ma-3',
-          image: '../images/default.png',
-        },
-        {
-          step: 4,
-          name: 'Se reproduce',
-          code: 'ma-4 ',
-          image: '../images/default.png',
-        },
-        {
-          step: 5,
-          name: 'Muere',
-          code: 'ma-5 ',
-          image: '../images/default.png',
-        },
-      ],
-    },
-    {
-      name: 'Hongo',
-      title: 'El Hongo',
-      image: '../images/Lab2/lab02-card-hongo.svg',
       code: 'mariposa',
       cycle: [
         {
