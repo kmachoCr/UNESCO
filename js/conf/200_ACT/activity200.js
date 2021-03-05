@@ -71,8 +71,8 @@ const activity2 = {
       ],
     },
     {
-      name: 'Mariposa',
-      title: 'La Mariposa',
+      name: 'Humano',
+      title: 'Humano',
       image: '../images/Lab2/lab02-card-humanos.svg',
       code: 'mariposa',
       cycle: [
@@ -109,8 +109,8 @@ const activity2 = {
       ],
     },
     {
-      name: 'Mariposa',
-      title: 'La Mariposa',
+      name: 'Arbol',
+      title: 'Árbol de naranja',
       image: '../images/Lab2/lab02-card-arbol.svg',
       code: 'mariposa',
       cycle: [
@@ -147,8 +147,8 @@ const activity2 = {
       ],
     },
     {
-      name: 'Mariposa',
-      title: 'La Mariposa',
+      name: 'Rana',
+      title: 'La Rana',
       image: '../images/Lab2/lab02-card-rana.svg',
       code: 'mariposa',
       cycle: [
@@ -185,8 +185,8 @@ const activity2 = {
       ],
     },
     {
-      name: 'Mariposa',
-      title: 'La Mariposa',
+      name: 'Hongo',
+      title: 'El Hongo',
       image: '../images/Lab2/lab02-card-hongo.svg',
       code: 'mariposa',
       cycle: [

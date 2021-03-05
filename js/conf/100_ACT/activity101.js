@@ -91,7 +91,7 @@ const activity101 = {
     },
     {
       title: 'Ahora, seleccioná un ser que respira. ',
-      image: "../images/lab1/lab01-landscape-bk-vacio.png",
+      image: "../images/lab1/lab01-landscape-delfin.png",
       audio: '../audios/03-cual-respira.mp3',
       options: [
         {
@@ -119,7 +119,7 @@ const activity101 = {
     },
     {
       title: 'Arrastrá al paisaje un ser que crece.',
-      image: "../images/lab1/lab01-landscape-bk-vacio.png",
+      image: "../images/lab1/lab01-landscape-mono.png",
       audio: '../audios/04-ser-que-crece.mp3',
       options: [
         {
@@ -147,7 +147,7 @@ const activity101 = {
     },
     {
       title: 'Escogé un elemento inerte artificial.',
-      image: "../images/lab1/lab01-landscape-bk-vacio.png",
+      image: "../images/lab1/lab01-landscape-arbol.png",
       audio: '../audios/05-elemento-inerte-artificial.mp3',
       options: [
         {
@@ -175,7 +175,7 @@ const activity101 = {
     },
     {
       title: 'Seleccioná un ser vivo que ocupa aire para vivir, como vos y como yo, pero que aguanta la respiración bajo el agua',
-      image: "../images/lab1/lab01-landscape-bk-vacio.png",
+      image: "../images/lab1/lab01-landscape-cerca.png",
       audio: '../audios/06-ser-vivo-aire.mp3',
       options: [
         {
@@ -203,7 +203,7 @@ const activity101 = {
     },
     {
       title: 'Volvamos nuestra mirada para arriba, ¿cuál es un elemento inerte que podemos ver en el cielo?',
-      image: "../images/lab1/lab01-landscape-bk-vacio.png",
+      image: "../images/lab1/lab01-landscape-tortuga.png",
       audio: '../audios/07-elemento-inerte-natural-cielo.mp3',
       options: [
         {
@@ -231,7 +231,7 @@ const activity101 = {
     },
     {
       title: 'Por último, escogé un ser que se reproduce por medio de huevos. ',
-      image: "../images/lab1/lab01-landscape-bk-vacio.png",
+      image: "../images/lab1/lab01-landscape-sol.png",
       audio: '../audios/08-ser-vivo-huevos.mp3',
       options: [
         {
