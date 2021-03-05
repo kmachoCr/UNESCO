@@ -43,7 +43,7 @@
   <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-wrap="false">
     <div class="carousel-inner" id="app-4">
 
-      <!-- <div class="carousel-item px-4" :class="{'active': index === 0}" v-for="(slide, index) in intros" :key="index">
+      <div class="carousel-item px-4" :class="{'active': index === 0}" v-for="(slide, index) in intros" :key="index">
         <div class="row">
           <div class="col-12">
             <div class="container-slide-head">
@@ -54,7 +54,7 @@
             <div class="row">
               <div class="col-7">
                 <div class="container-slide-image">
-                  <img :src="slide.image" class="w-100">
+                  <img :src="slide.image" style="width: 300px; margin: auto; display: block;">
                 </div>
               </div>
               <div class="col">
@@ -67,12 +67,13 @@
 
           </div>
           <div class="col-12">
-            <button  class="btn-nextSlide-first float-right" @click="nextSlide">
+            <button class="float-right btn activity-control-next" href="#carouselExampleControls" role="button"
+              data-slide="next">
               Siguiente
             </button>
           </div>
         </div>
-      </div> -->
+      </div>
       <div class="carousel-item px-4" :class="{'active': index === 0}" v-for="(slide, index) in slides" :key="index">
         <button class="btn-back" @click="prevSlide">
               Regresar
@@ -120,7 +121,7 @@
           </div>
         </div>
       </div>
-      <div class="modal fade bd-example-modal-lg feedback-modal" tabindex="-1" role="dialog" id="feedback-modal" aria-hidden="true">
+      <div class="modal fade bd-example-modal-lg feedback-modal" tabindex="-1" role="dialog" id="feedback-modal"  data-backdrop="static" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-centered">
           <div class="modal-content">
             <h3
@@ -130,7 +131,7 @@
               <p class="font-size-24 mb-4 font-weight-bold line-height-normal font-color-4D">{{feedback}}</p>
             <button 
             class="feedback-modal-button" 
-            :class="[{'feedback-modal-button-correct': isCorrectAnswer, 'feedback-modal-button-incorrect': !isCorrectAnswer}]" @click="isCorrectAnswer ? nextSlide() : closeModal()">{{isCorrectAnswer ? 'Continuar' : 'Intentar otra vez'}}</button>
+            :class="[{'feedback-modal-button-correct': isCorrectAnswer, 'feedback-modal-button-incorrect': !isCorrectAnswer}]" @click="isCorrectAnswer ? nextSlide(true) : closeModal()">{{isCorrectAnswer ? 'Continuar' : 'Intentar otra vez'}}</button>
           </div>
         </div>
       </div>
@@ -143,20 +144,21 @@
       el: '#app-4',
       data: {
         slides: activity101.slides,
-        // intros: activity101.introSlides,
+        intros: activity101.introSlides,
         currentSlide: 0,
         introAudios: [],
         completed: false,
         feedback: '',
         feedbackTitle: '',
+        audioFeedback: null,
         isCorrectAnswer: false,
       },
       mounted() {
-        let audio = new Audio(this.intros[this.currentSlide].audio);
-        audio.play();
-
         $('.carousel').on('slid.bs.carousel', (evt) => {
-          audio = new Audio(this.intros[evt.to].audio);
+    
+          const url = this.intros[evt.to] ? this.intros[evt.to].audio : this.slides[evt.to - this.intros.length].audio;
+
+          const audio =   new Audio(url)
           audio.play();
         });
       },
@@ -173,7 +175,7 @@
         validateAnswer(index, indexOptions) {
           this.$refs.option[index].classList.remove('activity-grid-item-element-valid', 'activity-grid-item-element-invalid');
           let classToAdd = 'activity-grid-item-element-invalid';
-          let audio = new Audio(this.slides[index].options[indexOptions].audio);
+          this.audioFeedback = new Audio(this.slides[index].options[indexOptions].audio);
           this.feedbackTitle = "¡Incorrecto!";
           this.isCorrectAnswer = false;
           this.feedback = this.slides[index].options[indexOptions].feedback;
@@ -184,7 +186,7 @@
             classToAdd = 'activity-grid-item-element-valid';
           }
 
-          audio.play();
+          this.audioFeedback.play();
           this.$refs.option[(index * 3) + indexOptions].classList.add(classToAdd);
           $('#feedback-modal').modal('show');
         },
@@ -196,10 +198,13 @@
         },
         closeModal() {
           $('#feedback-modal').modal('hide');
+          this.audioFeedback.pause();
         },
-        nextSlide(){
+        nextSlide(stopAudio){
           $('#feedback-modal').modal('hide');
           $('.carousel').carousel('next');
+
+          stopAudio && this.audioFeedback.pause();
         },
         prevSlide(){
           $('.carousel').carousel('prev');

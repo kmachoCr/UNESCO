@@ -153,12 +153,17 @@
         },
         onDrop(evt, cycleCode, dropCode) {
           const dragCode = evt.dataTransfer.getData('code');
+          let audio = null;
+          
           if (dropCode === dragCode) {
             const index = this.selectedCycle.cycle.findIndex(element => `${cycleCode}-${element.step}` === dropCode);
             this.selectedCycle.cycle[index].placed = true;
             this.$forceUpdate();
+            audio = new Audio("../audios/correct-answer.mp3");
+          }else {
+            audio = new Audio("../audios/wrong-answer.mp3");
           }
-
+          audio.play();
           if (this.selectedCycle.cycle.every(elem => elem.placed)) {
             $('#activity200-modal').modal('show');
           }
