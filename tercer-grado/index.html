@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel='shortcut icon' type='image/x-icon' href='../images/lab3/lab03-favicon.ico' />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Explorando el sistema digestivo" />
+  <meta property="og:description" content="¿Qué pasa cuando los alimentos ingresan a nuestro organismo?" />
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/activity3.css">
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Explorando el sistema digestivo</title>
+</head>
+
+<body>
+  <header class="header-mep">
+    <div class="header-title-image d-flex"><img src="../images/lab3/lab03-title.svg" style="width: 400px;" alt="Explorando el sistema digestivo"></div>
+    <div class="mep-unesco-logo">
+      <div class="header-mep-icon"><a href="https://www.mep.go.cr/" target="_blank"><img src="../images/logo-mep.svg" alt="Logo MEP"></a></div>
+      <div class="header-mep-icon"><img src="../images/logo-politica-eds.png" alt="Logo EDS"></div>
+    </div>
+  </header>
+  <div id="app-2" class="activity300">
+    
+    <div class="container" v-show="!hideMenu">
+      <div class="row">
+        <div class="col-sm-6">
+          <h2 class="activity300-intro">¿Qué pasa cuando los alimentos ingresan a nuestro organismo?</h2>
+          <p class="activity300-instructions">¡Te contamos cómo funciona el sistema digestivo!</p>
+        </div>
+        <div class="col-sm-6">
+          <ul>
+            <li>La digestión</li>
+            <li>Órganos del sistema digestivo</<li>li>
+            <li>El proceso digestivo</li>
+            <li>Cuidados del sistema digestivo</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+<!--La digestión-->
+    <div id="digestion" class="container-fluid" v-show="hideMenu">
+      <a class="activity300-cycle-go-back" v-show="hideMenu" @click="cleanActivity(true)"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
+      <div class="row">
+        <div class="col-sm-6">
+          <h2 class="activity300-intro">La Digestión</h2>
+          <p class="activity300-instructions">La digestión es el proceso de nuestro cuerpo que se encarga de transformar los alimentos que consumimos en nutrientes y energía, para ser absorbidos por el torrente sanguíneo y transportados a todas las células del organismo.</p>
+        </div>
+        <div class="col-sm-6">
+           GIF
+        </div>
+      </div> 
+    </div>
+
+<!--Organos-->
+    <div id="organos" class="container-fluid" v-show="hideMenu">
+      <a class="activity300-cycle-go-back" v-show="hideMenu" @click="cleanActivity(true)"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
+      <div class="row">
+        <div class="col-sm-6">
+          <h2 class="activity300-intro">Órganos del sistema digestivo</h2>
+          <p class="activity300-instructions">Lorem ipsum dolor...</p>
+        </div>
+        <div class="col-sm-6">
+           exploratoria
+        </div>
+      </div> 
+    </div>
+
+
+<!--Proceso-->
+    <div id="proceso" class="container-fluid" v-show="hideMenu">
+      <a class="activity300-cycle-go-back" v-show="hideMenu" @click="cleanActivity(true)"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
+      <div class="row">
+        <h2 class="activity300-intro">Proceso digestivo</h2>
+    </div>
+  </div>
+
+  <!--Cuidados-->
+    <div id="cuidados" class="container-fluid" v-show="hideMenu">
+      <a class="activity300-cycle-go-back" v-show="hideMenu" @click="cleanActivity(true)"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
+      <div class="row">
+        <h2 class="activity300-intro">Cuidados sistema digestivo</h2>
+    </div>
+  </div>
+
+
+  <script src="../js/conf/300_ACT/activity300.js"></script>
+  <script>
+    var app2 = new Vue({
+      el: '#app-2',
+      data: {
+        cycles: activity2.cycles,
+        selectedCycle: {},
+        orderedCycle: {},
+        hideMenu: false,
+      },
+      mounted() {
+
+      },
+      watch: {
+        selectedCycle: {
+          // This will let Vue know to look inside the array
+          deep: true,
+
+          // We have to move our method to a handler field
+          handler(value) {
+            this.hideMenu = this.selectedCycle.cycle && this.selectedCycle.cycle.length > 0;
+          }
+        }
+      },
+      methods: {
+        startDrag: (evt, code) => {
+          evt.dataTransfer.dropEffect = 'move';
+          evt.dataTransfer.effectAllowed = 'move';
+          evt.dataTransfer.setData('code', code);
+        },
+        onDrop(evt, cycleCode, dropCode) {
+          const dragCode = evt.dataTransfer.getData('code');
+          let audio = null;
+          
+          if (dropCode === dragCode) {
+            const index = this.selectedCycle.cycle.findIndex(element => `${cycleCode}-${element.step}` === dropCode);
+            this.selectedCycle.cycle[index].placed = true;
+            this.$forceUpdate();
+            audio = new Audio("../audios/correct-answer.mp3");
+          }else {
+            audio = new Audio("../audios/wrong-answer.mp3");
+          }
+          audio.play();
+          if (this.selectedCycle.cycle.every(elem => elem.placed)) {
+            $('#activity300-modal').modal('show');
+          }
+        },
+        selectCycle(index) {
+          this.selectedCycle = this.cycles[index];
+
+          this.orderedCycle = {...this.selectedCycle};
+          this.orderedCycle.cycle = [...this.selectedCycle.cycle].sort(function (a, b) {
+            if (a.step > b.step) {
+              return 1;
+            }
+            if (a.step < b.step) {
+              return -1;
+            }
+            // a must be equal to b
+            return 0;
+          });
+          
+          this.$forceUpdate();
+
+        },
+        cleanActivity(goBack) {
+
+          $('#activity300-modal').modal('hide');
+          this.selectedCycle.cycle.forEach((element, index) => {
+            element.placed = false;
+
+          });
+          if (goBack) {
+            this.selectedCycle = {};
+          }
+          this.$forceUpdate();
+        }
+      },
+    });
+  </script>
+</body>
+
+</html>
