@@ -231,6 +231,7 @@ body {
 
 .activity200-modal .activity200-modal-button img {
   height: 73px;
+  cursor: pointer;
 }
 
 .activity200-modal .activity200-modal-button.bigger img {
