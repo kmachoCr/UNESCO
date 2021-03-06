@@ -30,6 +30,16 @@ const activity101 = {
     //     '¡Mmm..creo que estas un poco confundido! Las cercas son construidas por las personas, por lo que no son seres naturales.',
     //     '¡Mmm..creo que estas un poco confundido! Las cercas son construidas por las personas, por lo que no son seres naturales.',
     //   ],
+    // },
+    // {
+    //   title: 'Seleccioná un elemento inerte natural.',
+    //   image: "https://picsum.photos/800/600?grayscale",
+    //   audio: '../audios/correct-answer.mp3',
+    //   strings: [
+    //     '¡Mmm..creo que estas un poco confundido! Las cercas son construidas por las personas, por lo que no son seres naturales.',
+    //     '¡Mmm..creo que estas un poco confundido! Las cercas son construidas por las personas, por lo que no son seres naturales.',
+    //     '¡Mmm..creo que estas un poco confundido! Las cercas son construidas por las personas, por lo que no son seres naturales.',
+    //   ],
     // }
   ],
   slides: [

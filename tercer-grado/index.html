@@ -43,63 +43,73 @@
     <div class="container" v-show="!hideMenu">
       <div class="row">
         <div class="col-sm-6">
-          <h2 class="activity300-intro">¿Qué pasa cuando los alimentos ingresan a nuestro organismo?</h2>
+          <h2 class="activity300title">¿Qué pasa cuando los alimentos ingresan a nuestro organismo?</h2>
           <p class="activity300-instructions">¡Te contamos cómo funciona el sistema digestivo!</p>
+          <img class="activity300-instructions" src="../images/lab3/lab03-frutas.svg" alt="ilustración de frutas y vegetales">
         </div>
-        <div class="col-sm-6">
-          <ul>
-            <li>La digestión</li>
-            <li>Órganos del sistema digestivo</<li>li>
-            <li>El proceso digestivo</li>
-            <li>Cuidados del sistema digestivo</li>
-          </ul>
+        <div class="col-sm-6 activity300-menu">
+            <div class="activity300-menu--item digestion"><a href="#"><img src="../images/lab3/lab03-btn1.svg" alt="botón la digestion"></a></div>
+            <div class="activity300-menu--item organos"><a href="#"><img src="../images/lab3/lab03-btn2.svg" alt="botón Órganos del sistema digestivo"></a></div>
+            <div class="activity300-menu--item proceso"><a href="#"><img src="../images/lab3/lab03-btn3.svg" alt="botón El proceso digestivo"></a></div>
+            <div class="activity300-menu--item cuidados"><a href="#"><img src="../images/lab3/lab03-btn4.svg" alt="botón Cuidados del sistema digestivo"></a></div>
         </div>
       </div>
     </div>
 
 
 <!--La digestión-->
-    <div id="digestion" class="container-fluid" v-show="hideMenu">
-      <a class="activity300-cycle-go-back" v-show="hideMenu" @click="cleanActivity(true)"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
+    <div id="digestion" class="container-fluid" v-show="!hideMenu">
+      <a class="activity300-cycle-go-back" v-show="!hideMenu" @click="cleanActivity(true)"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
       <div class="row">
         <div class="col-sm-6">
-          <h2 class="activity300-intro">La Digestión</h2>
+          <h2 class="activity300title">La Digestión</h2>
           <p class="activity300-instructions">La digestión es el proceso de nuestro cuerpo que se encarga de transformar los alimentos que consumimos en nutrientes y energía, para ser absorbidos por el torrente sanguíneo y transportados a todas las células del organismo.</p>
         </div>
         <div class="col-sm-6">
-           GIF
+          <img src="../images/lab3/lab03-fig.svg" alt="exploratoria" class="img-fluid">
         </div>
       </div> 
     </div>
 
 <!--Organos-->
-    <div id="organos" class="container-fluid" v-show="hideMenu">
-      <a class="activity300-cycle-go-back" v-show="hideMenu" @click="cleanActivity(true)"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
+    <div id="organos" class="container-fluid" v-show="!hideMenu">
+      <a class="activity300-cycle-go-back" v-show="!hideMenu" @click="cleanActivity(true)"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
       <div class="row">
         <div class="col-sm-6">
-          <h2 class="activity300-intro">Órganos del sistema digestivo</h2>
-          <p class="activity300-instructions">Lorem ipsum dolor...</p>
+          <h2 class="activity300title">Órganos del sistema digestivo</h2>
+          <p class="activity300-instructions">Seleccioná un órgano para saber cuál es su función</p>
         </div>
         <div class="col-sm-6">
-           exploratoria
+          <img src="../images/lab3/lab03-fig.svg" alt="exploratoria" class="img-fluid">
         </div>
       </div> 
     </div>
 
 
 <!--Proceso-->
-    <div id="proceso" class="container-fluid" v-show="hideMenu">
-      <a class="activity300-cycle-go-back" v-show="hideMenu" @click="cleanActivity(true)"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
+    <div id="proceso" class="container-fluid" v-show="!hideMenu">
+      <a class="activity300-cycle-go-back" v-show="!hideMenu" @click="cleanActivity(true)"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
       <div class="row">
-        <h2 class="activity300-intro">Proceso digestivo</h2>
+        <h2 class="activity300title">Proceso digestivo</h2>
     </div>
   </div>
 
   <!--Cuidados-->
-    <div id="cuidados" class="container-fluid" v-show="hideMenu">
+    <div id="cuidados" class="container-fluid" v-show="!hideMenu">
       <a class="activity300-cycle-go-back" v-show="hideMenu" @click="cleanActivity(true)"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
       <div class="row">
-        <h2 class="activity300-intro">Cuidados sistema digestivo</h2>
+        <div class="col-sm-6">
+           <h2 class="activity300title">Cuidados del sistema digestivo</h2>
+           <div class="row activity300-cuidados-intro">
+              <div class="col-sm-6"><img src="../images/lab3/lab03-frutas.svg" alt="ilustración de niño hablando" class="img-fluid">
+              </div>
+              <div class="col-sm-6">Para tener un sistema digestivo saludable podés poner en práctica las siguientes acciones:</div>
+              </div>
+            </div>
+        <div class="col-sm-6">
+           acá va carrusel
+        </div>
+      </div>        
     </div>
   </div>
 
