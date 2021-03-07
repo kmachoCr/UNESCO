@@ -1,5 +1,6 @@
 body {
   font-family: 'Quicksand', sans-serif;
+  counter-reset: section;
 }
 
 .header-mep {
@@ -51,13 +52,13 @@ body {
   text-align: center;
 }
 .activity300 {
-  padding: 60px 30px;
+  padding: 30px;
   position: relative;
 }
 
 h2.activity300title{
   font-weight: 700;
-  font-size: 24px;
+  font-size: 33px;
   margin-bottom: 30px;
   color: #F15A25;
 }
@@ -132,77 +133,10 @@ margin-top: 20px;
 
 }
 
-.activity300 .activity300-cycle,
-.activity300-dropzone-label,
-.activity300 .activity300-dropzone {
-  display: flex;
-  justify-content: center ;
-}
-.activity300 .activity300-cycle {
-  margin-bottom: 30px ;
-}
-
-.activity300 .activity300-cycle--item,
-.activity300 .activity300-dropzone--item {
-  margin: 0 10px 0 0;
-}
-
-.activity300-dropzone-label--item {
-  width: 200px;
-  margin: auto 43px;
-  text-align: center;
-  color: #666;
-  font-size: 21px;
-  font-weight: 700;
-  margin-top: 10px;
-}
-
-.activity300-dropzone-label--item-double .activity300-dropzone-label--item-container {
-  width: 500px;
-}
-
 .activity300 .activity300-cycle--item-container {
   margin: auto;
   text-align: center;
   cursor: pointer;
-}
-
-.activity300 .activity300-dropzone--item-container {
-  height: 200px;
-  width: 200px;
-  margin: auto 35px;
-  border: 5px dashed #FBB03B;
-  border-radius: 15px;
-  text-align: center;
-  display: flex;
-  cursor: pointer;
-  position: relative;
-}
-
-.activity300 .activity300-dropzone--item:not(:first-child) .activity300-dropzone--item-container:after {
-  content: "";
-  background: url(../images/Lab2/lab02-btn-flecha.svg) no-repeat;
-  width: 40px;
-  height: 40px;
-  background-size: contain;
-  bottom: 0;
-  top: 0;
-  margin: auto;
-  left: -63px;
-  position: absolute;
-}
-
-.activity300 .activity300-dropzone--item-container {
-  height: 200px;
-}
-
-
-.activity300 .activity300-cycle--item-container img,
-.activity300 .activity300-dropzone--item-container img {
-  height: 150px;
-  width: 150px;
-  margin: auto;
-  display: block; 
 }
 
 .activity300-modal-button-container {
@@ -234,3 +168,117 @@ margin-top: 20px;
   height: 90px;
 }
 
+
+
+.activity300 .activity300-cycle,
+.activity300-dropzone-label,
+.activity300 .activity300-dropzone {
+  display: flex;
+  justify-content: center ;
+  flex-flow: column;
+  text-align: center;
+  padding-top: 35px;
+}
+.activity300 .activity300-cycle {
+  margin-bottom: 30px ;
+  background: url(../images/lab3/lab03-fig.svg) no-repeat;
+  background-size: cover;
+  min-height: 500px;
+  padding-top: 80px;
+}
+
+.activity300 .activity300-cycle--item,
+.activity300 .activity300-dropzone--item {
+  margin: 0 0 10px 0;
+}
+
+.activity300-cycle-list-title {
+  background-color: rgb(0, 169, 157);
+  padding: 15px 30px;
+  color: #fff;
+  width: 307px;
+  font-size: 18px;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border-radius: 7px;
+}
+
+.activity300-cycle-list-title::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 30px 30px 0 30px;
+  border-color: rgb(0, 169, 157) transparent transparent transparent;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+
+
+
+.activity300-dropzone-label--item {
+  width: 100%;
+  margin: auto 43px;
+  text-align: center;
+  color: #666;
+  font-size: 21px;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.activity300-dropzone-label--item-double .activity300-dropzone-label--item-container {
+  width: 500px;
+}
+
+.activity300 .activity300-cycle--item-container {
+  margin: auto;
+  text-align: center;
+  cursor: pointer;
+}
+
+.activity300 .activity300-dropzone--item-container {
+  width: 100%;
+  max-width: 515px;
+  border: 3px dashed #FBB03B;
+  border-radius: 15px;
+  text-align: center;
+  display: flex;
+  cursor: pointer;
+  position: relative;
+  float: right;
+  
+}
+
+.activity300 .activity300-dropzone--item .activity300-dropzone--item-container:after {
+  counter-increment: section;
+  content: counter(section) ".";
+  width: 40px;
+  height: 40px;
+  background-size: contain;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+  left: 11px;
+  font-size: 26px;
+  color: #FBB03B;
+  position: absolute;
+  font-weight: 700;
+}
+
+.activity300 .activity300-dropzone--item-container {
+  height: 85px;
+}
+
+
+.activity300 .activity300-cycle--item-container img,
+.activity300 .activity300-dropzone--item-container img {
+  height: 65px;
+  margin: auto;
+  display: block; 
+}

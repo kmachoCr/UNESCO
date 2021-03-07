@@ -40,7 +40,7 @@
   </header>
   <div id="app-2" class="activity300">
     
-    <div class="container" v-show="!hideMenu">
+    <div class="container" v-show="page == 0">
       <div class="row">
         <div class="col-sm-6">
           <h2 class="activity300title">¿Qué pasa cuando los alimentos ingresan a nuestro organismo?</h2>
@@ -48,18 +48,18 @@
           <img class="activity300-instructions" src="../images/lab3/lab03-frutas.svg" alt="ilustración de frutas y vegetales">
         </div>
         <div class="col-sm-6 activity300-menu">
-            <div class="activity300-menu--item digestion"><a href="#"><img src="../images/lab3/lab03-btn1.svg" alt="botón la digestion"></a></div>
-            <div class="activity300-menu--item organos"><a href="#"><img src="../images/lab3/lab03-btn2.svg" alt="botón Órganos del sistema digestivo"></a></div>
-            <div class="activity300-menu--item proceso"><a href="#"><img src="../images/lab3/lab03-btn3.svg" alt="botón El proceso digestivo"></a></div>
-            <div class="activity300-menu--item cuidados"><a href="#"><img src="../images/lab3/lab03-btn4.svg" alt="botón Cuidados del sistema digestivo"></a></div>
+            <div class="activity300-menu--item digestion" @click="goTo(1)" ><a href="#"><img src="../images/lab3/lab03-btn1.svg" alt="botón la digestion"></a></div>
+            <div class="activity300-menu--item organos" @click="goTo(2)"><a href="#"><img src="../images/lab3/lab03-btn2.svg" alt="botón Órganos del sistema digestivo"></a></div>
+            <div class="activity300-menu--item proceso" @click="goTo(3)"><a href="#"><img src="../images/lab3/lab03-btn3.svg" alt="botón El proceso digestivo"></a></div>
+            <div class="activity300-menu--item cuidados" @click="goTo(4)"><a href="#"><img src="../images/lab3/lab03-btn4.svg" alt="botón Cuidados del sistema digestivo"></a></div>
         </div>
       </div>
     </div>
 
 
 <!--La digestión-->
-    <div id="digestion" class="container-fluid" v-show="!hideMenu">
-      <a class="activity300-cycle-go-back" v-show="!hideMenu" @click="cleanActivity(true)"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
+    <div id="digestion" class="container-fluid" v-show="page === 1">
+      <a class="activity300-cycle-go-back" v-show="page !== 0" @click="cleanActivity(true)"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
       <div class="row">
         <div class="col-sm-6">
           <h2 class="activity300title">La Digestión</h2>
@@ -72,8 +72,8 @@
     </div>
 
 <!--Organos-->
-    <div id="organos" class="container-fluid" v-show="!hideMenu">
-      <a class="activity300-cycle-go-back" v-show="!hideMenu" @click="cleanActivity(true)"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
+    <div id="organos" class="container-fluid" v-show="page === 2">
+      <a class="activity300-cycle-go-back" v-show="page !== 0" @click="cleanActivity(true)"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
       <div class="row">
         <div class="col-sm-6">
           <h2 class="activity300title">Órganos del sistema digestivo</h2>
@@ -87,16 +87,60 @@
 
 
 <!--Proceso-->
-    <div id="proceso" class="container-fluid" v-show="!hideMenu">
-      <a class="activity300-cycle-go-back" v-show="!hideMenu" @click="cleanActivity(true)"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
+    <div id="proceso" class="container-fluid" v-show="page === 3">
+      <a class="activity300-cycle-go-back" v-show="page !== 0" @click="cleanActivity(true)"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
       <div class="row">
-        <h2 class="activity300title">Proceso digestivo</h2>
+        <div class=" col-6">
+          
+          <div class="activity300-dropzone">
+            <h2 class="activity300title">El proceso digestivo</h2>
+            <div class="activity300-dropzone--item" :class="`activity300-dropzone--item-${index+1}`"
+              v-for="(step, index) in [1, 2, 3, 4, 5]" :key="index">
+              <div class="activity300-dropzone--item-container"
+                @drop='onDrop($event, index, `${index + 1}`)' @dragover.prevent
+                @dragenter.prevent>
+                <img :src="`../images/lab3/lab03-bxB${index + 1}.svg`" v-show="placedDropzone[index]" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-6">
+          <div class="activity300-cycle-list-title" style="background-color: #00A99D;">
+            <p class="mb-0">Arratrá las etapas del proceso según corresponda.</p>
+          </div>
+          <div class="activity300-cycle">
+            <div class="activity300-cycle--item" :class="`activity300-cycle--item-${index+1}`"
+            v-for="(step, index) in stepList" :key="index">
+              <div class="activity300-cycle--item-container" draggable
+                @dragstart='startDrag($event, `${step}`)'>
+                <img :src="`../images/lab3/lab03-bxB${step}.svg`" v-show="placedList[index]" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="modal fade bd-example-modal-lg activity300-modal" tabindex="-1" role="dialog" id="activity300-modal" data-backdrop="static" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-centered">
+        <div class="modal-content">
+
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-12">
+                <p class="activity300-modal-title">¡Muy bien!</p>
+                <p class="activity300-modal-message">Has completado el proceso de la digestión.</p>
+              </div>
+              <div class="col activity300-modal-button-container">
+                <a class="activity300-modal-button" @click="cleanActivity()"><img src="../images/Lab2/lab02-btn-repetir.svg" alt=""></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
   <!--Cuidados-->
-    <div id="cuidados" class="container-fluid" v-show="!hideMenu">
-      <a class="activity300-cycle-go-back" v-show="hideMenu" @click="cleanActivity(true)"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
+    <div id="cuidados" class="container-fluid" v-show="page === 4">
+      <a class="activity300-cycle-go-back" v-show="page !== 0" @click="cleanActivity(true)"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
       <div class="row">
         <div class="col-sm-6">
            <h2 class="activity300title">Cuidados del sistema digestivo</h2>
@@ -123,72 +167,55 @@
         selectedCycle: {},
         orderedCycle: {},
         hideMenu: false,
+        page: 0,
+        placedList: [true, true, true, true, true],
+        placedDropzone: [false, false, false, false, false],
+        stepList: [2, 5, 1, 3, 4],
       },
       mounted() {
 
       },
       watch: {
         selectedCycle: {
-          // This will let Vue know to look inside the array
           deep: true,
-
-          // We have to move our method to a handler field
           handler(value) {
             this.hideMenu = this.selectedCycle.cycle && this.selectedCycle.cycle.length > 0;
           }
         }
       },
       methods: {
+        goTo(page){
+          this.page = page;
+        },
         startDrag: (evt, code) => {
           evt.dataTransfer.dropEffect = 'move';
           evt.dataTransfer.effectAllowed = 'move';
           evt.dataTransfer.setData('code', code);
         },
-        onDrop(evt, cycleCode, dropCode) {
+        onDrop(evt, index, dropCode) {
           const dragCode = evt.dataTransfer.getData('code');
           let audio = null;
           
           if (dropCode === dragCode) {
-            const index = this.selectedCycle.cycle.findIndex(element => `${cycleCode}-${element.step}` === dropCode);
-            this.selectedCycle.cycle[index].placed = true;
+            const indexList = this.stepList.findIndex(element => `${element}` === dropCode);
+
+            this.placedDropzone[index] = true;
+            this.placedList[indexList] = false;
             this.$forceUpdate();
             audio = new Audio("../audios/correct-answer.mp3");
           }else {
             audio = new Audio("../audios/wrong-answer.mp3");
           }
           audio.play();
-          if (this.selectedCycle.cycle.every(elem => elem.placed)) {
+          if (this.placedDropzone.every(elem => elem === true)) {
             $('#activity300-modal').modal('show');
           }
-        },
-        selectCycle(index) {
-          this.selectedCycle = this.cycles[index];
-
-          this.orderedCycle = {...this.selectedCycle};
-          this.orderedCycle.cycle = [...this.selectedCycle.cycle].sort(function (a, b) {
-            if (a.step > b.step) {
-              return 1;
-            }
-            if (a.step < b.step) {
-              return -1;
-            }
-            // a must be equal to b
-            return 0;
-          });
-          
-          this.$forceUpdate();
-
         },
         cleanActivity(goBack) {
 
           $('#activity300-modal').modal('hide');
-          this.selectedCycle.cycle.forEach((element, index) => {
-            element.placed = false;
-
-          });
-          if (goBack) {
-            this.selectedCycle = {};
-          }
+          this.placedList = [true, true, true, true, true];
+          this.placedDropzone = [false, false, false, false, false];
           this.$forceUpdate();
         }
       },

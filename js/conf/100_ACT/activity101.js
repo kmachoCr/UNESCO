@@ -1,13 +1,13 @@
 const activity101 = {
   introSlides: [
-     // {
-      //  title: 'Los seres vivos y los elementos inertes',
-      //  image: "../images/lab1/lab01-nina.svg",
-      //  audio: '../audios/correct-answer.mp3',
-      //  strings: [
-      //    '¡Hola!',
-      //    '¿Sabías que las plantas están vivas? Si, como vos y como yo.',
-      //    'Y que además existen los elementos inertes.',
+    // {
+    //  title: 'Los seres vivos y los elementos inertes',
+    //  image: "../images/lab1/lab01-nina.svg",
+    //  audio: '../audios/correct-answer.mp3',
+    //  strings: [
+    //    '¡Hola!',
+    //    '¿Sabías que las plantas están vivas? Si, como vos y como yo.',
+    //    'Y que además existen los elementos inertes.',
     //    '¿Querés que te explique?',
     //   ],
     // },
