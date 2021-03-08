@@ -97,7 +97,7 @@
             <div class="activity300-dropzone--item" :class="`activity300-dropzone--item-${index+1}`"
               v-for="(step, index) in [1, 2, 3, 4, 5]" :key="index">
               <div class="activity300-dropzone--item-container"
-                @drop='onDrop($event, index, `${index + 1}`)' @dragover.prevent
+                @drop='onDrop($event, index, `${step}`)' @dragover.prevent
                 @dragenter.prevent>
                 <img :src="`../images/lab3/lab03-bxB${index + 1}.svg`" v-show="placedDropzone[index]" alt="">
               </div>
@@ -109,7 +109,7 @@
             <p class="mb-0">Arratrá las etapas del proceso según corresponda.</p>
           </div>
           <div class="activity300-cycle">
-            <div class="activity300-cycle--item" :class="`activity300-cycle--item-${index+1}`"
+            <div class="activity300-cycle--item" :class="`activity300-cycle--item-${step}`"
             v-for="(step, index) in stepList" :key="index">
               <div class="activity300-cycle--item-container" draggable
                 @dragstart='startDrag($event, `${step}`)'>
