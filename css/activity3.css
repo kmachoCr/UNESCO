@@ -121,6 +121,7 @@ margin-top: 20px;
   top: 25px;
   left: 25px;
   cursor: pointer;
+  z-index: 9;
 } 
 
 .activity300 .activity300-cycle-go-back img {

@@ -59,7 +59,7 @@
 
 <!--La digestión-->
     <div id="digestion" class="container-fluid" v-show="page === 1">
-      <a class="activity300-cycle-go-back" v-show="page !== 0" @click="cleanActivity(true)"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
+      <a class="activity300-cycle-go-back" v-show="page !== 0" @click="goBack()"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
       <div class="row">
         <div class="col-sm-6">
           <h2 class="activity300title">La Digestión</h2>
@@ -73,7 +73,7 @@
 
 <!--Organos-->
     <div id="organos" class="container-fluid" v-show="page === 2">
-      <a class="activity300-cycle-go-back" v-show="page !== 0" @click="cleanActivity(true)"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
+      <a class="activity300-cycle-go-back" v-show="page !== 0" @click="goBack()"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
       <div class="row">
         <div class="col-sm-6">
           <h2 class="activity300title">Órganos del sistema digestivo</h2>
@@ -212,10 +212,17 @@
           }
         },
         cleanActivity(goBack) {
-
           $('#activity300-modal').modal('hide');
           this.placedList = [true, true, true, true, true];
           this.placedDropzone = [false, false, false, false, false];
+          if(goBack){
+            this.page = 0;
+          }
+          this.$forceUpdate();
+        },
+        goBack() {
+          this.page = 0;
+          
           this.$forceUpdate();
         }
       },
