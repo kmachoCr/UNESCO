@@ -58,7 +58,7 @@
 
 
 <!--La digestión-->
-    <div id="digestion" class="container-fluid" v-show="page === 1">
+    <div id="digestion" class="container" v-show="page === 1">
       <a class="activity300-cycle-go-back" v-show="page !== 0" @click="goBack()"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
       <div class="row">
         <div class="col-sm-6">
@@ -72,7 +72,7 @@
     </div>
 
 <!--Organos-->
-    <div id="organos" class="container-fluid" v-show="page === 2">
+    <div id="organos" class="container" v-show="page === 2">
       <a class="activity300-cycle-go-back" v-show="page !== 0" @click="goBack()"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
       <div class="row">
         <div class="col-sm-6">
@@ -87,7 +87,7 @@
 
 
 <!--Proceso-->
-    <div id="proceso" class="container-fluid" v-show="page === 3">
+    <div id="proceso" class="container" v-show="page === 3">
       <a class="activity300-cycle-go-back" v-show="page !== 0" @click="cleanActivity(true)"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
       <div class="row">
         <div class=" col-6">
@@ -139,19 +139,41 @@
     </div>
   </div>
   <!--Cuidados-->
-    <div id="cuidados" class="container-fluid" v-show="page === 4">
+    <div id="cuidados" class="container" v-show="page === 4">
       <a class="activity300-cycle-go-back" v-show="page !== 0" @click="cleanActivity(true)"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
-      <div class="row">
-        <div class="col-sm-6">
-           <h2 class="activity300title">Cuidados del sistema digestivo</h2>
-           <div class="row activity300-cuidados-intro">
-              <div class="col-sm-6"><img src="../images/lab3/lab03-frutas.svg" alt="ilustración de niño hablando" class="img-fluid">
-              </div>
-              <div class="col-sm-6">Para tener un sistema digestivo saludable podés poner en práctica las siguientes acciones:</div>
-              </div>
-            </div>
-        <div class="col-sm-6">
-           acá va carrusel
+      <h2 class="activity300title">Cuidados del sistema digestivo</h2>
+      <div class="row activity300-cuidados-intro">
+        <div class="col-md-5">
+          <img src="../images/lab3/cuidados/lab03-sli-personaje.png" alt="ilustración de niño hablando" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+           <div class="slider-container">
+              <div id="carouselExampleControls" class="carousel slide" data-ride="carousel"
+                            data-interval="false">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="../images/lab3/cuidados/lab03-sli-ficha1.png" alt="First slide">
+                    </div>
+                    <div class="carousel-item">
+                      <img class="d-block w-100" src="../images/lab3/cuidados/lab03-sli-ficha1.png" alt="First slide">
+                    </div>
+                    <div class="carousel-item">
+                      <img class="d-block w-100" src="../images/lab3/cuidados/lab03-sli-ficha1.png" alt="First slide">
+                    </div>
+                  </div>
+                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                                data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                                data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                        <p class="text-center mt-3 font-color-4D">Da clic sobre las flechas para conocer más.</p>
+                    </div>
         </div>
       </div>        
     </div>
