@@ -320,6 +320,36 @@ margin-top: 20px;
   z-index: 1;
 }
 
+#organos .descripcion{
+  padding: 80px 20px 20px 20px;
+}
+
+#organos .descripcion div{
+  background: #C7E7EB;
+  color: #1F4C8C;
+  text-align: center;
+  padding: 20px;
+  font-size: 1.3em;
+  font-weight: bold;
+  border-radius: 15px;
+  margin-bottom: 5px;
+}
+
+#organos .descripcion div h3{
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+#organos .organos-menu div{
+  margin-top: 20px;
+}
+#organos .organos-menu div{
+  text-align: right;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+
 @media (min-width: 992px){
 
 .activity300 .activity300-cuidados-intro {
