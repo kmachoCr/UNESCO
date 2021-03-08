@@ -56,6 +56,10 @@ body {
   position: relative;
 }
 
+#organos, #digestion, #proceso, #cuidados {
+  margin-top: 60px;
+}
+
 h2.activity300title{
   font-weight: 700;
   font-size: 33px;
@@ -220,9 +224,6 @@ margin-top: 20px;
   margin: auto;
 }
 
-
-
-
 .activity300-dropzone-label--item {
   width: 100%;
   margin: auto 43px;
@@ -282,4 +283,59 @@ margin-top: 20px;
   height: 65px;
   margin: auto;
   display: block; 
+}
+
+.activity300 #cuidados .slider-container{
+  margin-top: 30px;
+}
+
+.activity300 .slider-container {
+  width: 100%;
+    background-image: url(../images/lab3/cuidados/lab03-sli-bg-cuadricula.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+}
+
+.carousel-control-next {
+  right: -50px;
+  z-index: 1;
+}
+
+.carousel-control-prev {
+  left: -50px;
+}
+
+.carousel-control-prev-icon {
+  background-image: url(../images/lab3/cuidados/lab03-sli-flecha-izq.png);
+}
+
+.carousel-control-next-icon {
+  background-image: url(../images/lab3/cuidados/lab03-sli-flecha-der.png);
+  z-index: 1;
+}
+
+@media (min-width: 992px){
+
+.activity300 .activity300-cuidados-intro {
+  width: 100%;
+  background-image: url(../images/lab3/cuidados/lab03-sli-bg-cuadricula.png);
+  background-size: 75%;
+  background-position: top right;
+  background-repeat: no-repeat;
+}
+.activity300 .slider-container {
+    background-image: none;
+}
+}
+
+@media (min-width: 1200px){
+.container {
+    max-width: 1260px;
+}
 }
