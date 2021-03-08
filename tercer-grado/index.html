@@ -59,7 +59,7 @@
 
 <!--La digestión-->
     <div id="digestion" class="container" v-show="page === 1">
-      <a class="activity300-cycle-go-back" v-show="page !== 0" @click="goBack()"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
+      <a class="activity300-cycle-go-back" v-show="page !== 0" @click="goBack()"><img src="../images/Lab2/lab02-btn-regresar.svg" alt="botón de Regresar al menú"></a>
       <div class="row">
         <div class="col-sm-6">
           <h2 class="activity300title">La Digestión</h2>
@@ -73,13 +73,50 @@
 
 <!--Organos-->
     <div id="organos" class="container" v-show="page === 2">
-      <a class="activity300-cycle-go-back" v-show="page !== 0" @click="goBack()"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
+      <a class="activity300-cycle-go-back" v-show="page !== 0" @click="goBack()"><img src="../images/Lab2/lab02-btn-regresar.svg" alt="botón de Regresar al menú"></a>
+
+      <h2 class="activity300title">Órganos del sistema digestivo</h2>
       <div class="row">
-        <div class="col-sm-6">
-          <h2 class="activity300title">Órganos del sistema digestivo</h2>
-          <p class="activity300-instructions">Seleccioná un órgano para saber cuál es su función</p>
+        <div class="col-4 descripcion">
+          <div class="boca">
+            <img src="../images/lab3/cuidados/lab03-sli-flecha-der.png" alt="ilustración del órgano del sistsema digestivo: Boca">
+            <h3>Boca</h3>
+            <p>Es el lugar de entrada de los alimentos al organismo. En ella se encuentran los dientes que con ayuda de las glándulas salivales y la lengua  trituran los alimentos.</p>
+          </div>
+          
+<!--        <h3>Faringe</h3>
+            <p>Canal que permite la comunicación entre la boca y el esófago. También forma parte del sistema respiratorio.</p>
+          
+            <h3>Esófago</h3>
+            <p>Es un tubo que se encarga de transportar el bolo alimenticio de la faringe al estómago.</p>
+          
+            <h3>Estómago</h3>
+            <p>Es una bolsa musculosa en forma de J. En él se secreta el jugo gástrico.</p>
+          
+            <h3>Hígado</h3>
+            <p>Es un órgano que segrega bilis, una sustancia que ayuda a digerir las grasas.</p>
+         
+            <h3>Páncreas</h3>
+            <p>Es un órgano que segrega jugo pancreático, el cual ayuda en la digestión de azúcares, grasas y proteínas.</p>
+          
+            <h3>Intestino delgado</h3>
+            <p>Es donde se produce la mayor parte de la digestión, ya que junto con la bilis y el jugo pancreático, se encarga de absorber los nutrientes de los alimentos.</p>
+          
+            <h3>Intestino grueso</h3>
+            <p>Es un tubo grueso y corto que rodea al intestino delgado. Se encarga de expulsar los residuos al exterior del cuerpo.</p> -->
+          </div>
+
+        <div class="col-3 organos-menu">
+          <div class="btn-boca">Boca</div>
+          <div class="btn-faringe">Faringe</div>
+          <div class="btn-esofago">Esófago</div>
+          <div class="btn-estomago">Estómago</div>
+          <div class="btn-higado">Hígado</div>
+          <div class="btn-pancreas">Páncreas</div>
+          <div class="btn-delgdo">Intestino delgado</div>
+          <div class="btn-grueso">Intestino grueso</div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-5">
           <img src="../images/lab3/lab03-fig.svg" alt="exploratoria" class="img-fluid">
         </div>
       </div> 
@@ -88,7 +125,7 @@
 
 <!--Proceso-->
     <div id="proceso" class="container" v-show="page === 3">
-      <a class="activity300-cycle-go-back" v-show="page !== 0" @click="cleanActivity(true)"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
+      <a class="activity300-cycle-go-back" v-show="page !== 0" @click="cleanActivity(true)"><img src="../images/Lab2/lab02-btn-regresar.svg" alt="botón de Regresar al menú"></a>
       <div class="row">
         <div class=" col-6">
           
@@ -140,7 +177,7 @@
   </div>
   <!--Cuidados-->
     <div id="cuidados" class="container" v-show="page === 4">
-      <a class="activity300-cycle-go-back" v-show="page !== 0" @click="cleanActivity(true)"><img src="../images/Lab2/lab02-btn-regresar.svg" alt=""></a>
+      <a class="activity300-cycle-go-back" v-show="page !== 0" @click="cleanActivity(true)"><img src="../images/Lab2/lab02-btn-regresar.svg" alt="botón de Regresar al menú"></a>
       <h2 class="activity300title">Cuidados del sistema digestivo</h2>
       <div class="row activity300-cuidados-intro">
         <div class="col-md-5">
