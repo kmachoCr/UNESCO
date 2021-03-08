@@ -72,11 +72,6 @@ h2.activity300title{
   color: #666666;
 }
 
-.activity300 img.activity300-instructions{
-max-width: 90%;
-margin-top: 20px;
-}
-
 .activity300 .activity300-menu{
   margin: auto;
   padding-top: 200px;
@@ -351,6 +346,10 @@ margin-top: 20px;
 
 
 @media (min-width: 992px){
+
+.activity300 .intro{
+  padding:0px 40px;
+}
 
 .activity300 .activity300-cuidados-intro {
   width: 100%;
