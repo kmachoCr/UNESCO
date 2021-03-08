@@ -42,20 +42,17 @@
     
     <div class="container" v-show="page == 0">
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-7">
           <h2 class="activity300title">¿Qué pasa cuando los alimentos ingresan a nuestro organismo?</h2>
-          <p class="activity300-instructions">¡Te contamos cómo funciona el sistema digestivo!</p>
-          <img class="activity300-instructions" src="../images/lab3/lab03-frutas.svg" alt="ilustración de frutas y vegetales">
-        </div>
-        <div class="col-sm-6 activity300-menu">
-            <div class="activity300-menu--item digestion" @click="goTo(1)" ><a href="#"><img src="../images/lab3/lab03-btn1.svg" alt="botón la digestion"></a></div>
+          <p class="activity300-instructions intro">La digestión es el proceso de nuestro cuerpo que se encarga de transformar los alimentos que consumimos en nutrientes y energía, para ser absorbidos por el torrente sanguíneo y transportados a todas las células del organismo.</p>
             <div class="activity300-menu--item organos" @click="goTo(2)"><a href="#"><img src="../images/lab3/lab03-btn2.svg" alt="botón Órganos del sistema digestivo"></a></div>
             <div class="activity300-menu--item proceso" @click="goTo(3)"><a href="#"><img src="../images/lab3/lab03-btn3.svg" alt="botón El proceso digestivo"></a></div>
             <div class="activity300-menu--item cuidados" @click="goTo(4)"><a href="#"><img src="../images/lab3/lab03-btn4.svg" alt="botón Cuidados del sistema digestivo"></a></div>
         </div>
+        <div class="col-sm-5 activity300-menu">
+        </div>
       </div>
     </div>
-
 
 <!--La digestión-->
     <div id="digestion" class="container" v-show="page === 1">
