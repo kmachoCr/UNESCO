@@ -74,10 +74,8 @@ h2.activity300title{
 
 .activity300 .activity300-menu{
   margin: auto;
-  padding-top: 200px;
+  padding-top: 00px;
   min-height: 600px;
-  background: url(../images/lab3/lab03-fig.svg) no-repeat;
-  background-size: cover;
 }
 
 .activity300 .activity300-menu--item{
@@ -316,7 +314,7 @@ h2.activity300title{
 }
 
 #organos .descripcion{
-  padding: 80px 20px 20px 20px;
+  padding: 0px 20px 20px 20px;
 }
 
 #organos .descripcion div{
@@ -334,6 +332,12 @@ h2.activity300title{
 #organos .descripcion div h3{
   font-size: 1.4em;
   font-weight: bold;
+}
+
+.col-3.organos-menu {
+    margin-right: -60px;
+    z-index: 100;
+    margin-left: 60px;
 }
 
 #organos .organos-menu div{

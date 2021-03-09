@@ -108,6 +108,15 @@ body {
   font-weight: 700;
 }
 
+.activity200 .h2-especie{
+  background: #00A99D;
+  font-weight: 900;
+  font-size: 38px;
+  padding:5px;
+  color:#fff;
+  border-radius: 8px;
+}
+
 .activity200 .activity200-cycle-subtitle {
   font-size: 21px;
   color: #666666;
@@ -161,9 +170,9 @@ body {
   margin-top: 10px;
 }
 
-.activity200-dropzone-label--item-double .activity200-dropzone-label--item-container {
+/*.activity200-dropzone-label--item-double .activity200-dropzone-label--item-container {
   width: 500px;
-}
+}*/
 
 .activity200 .activity200-cycle--item-container {
   margin: auto;
