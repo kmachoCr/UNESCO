@@ -328,6 +328,7 @@ h2.activity300title{
   font-weight: bold;
   border-radius: 15px;
   margin-bottom: 5px;
+  transition: height 2s ease-in-out;
 }
 
 #organos .descripcion div h3{
@@ -336,19 +337,18 @@ h2.activity300title{
 }
 
 #organos .organos-menu div{
-  margin-top: 20px;
-}
-#organos .organos-menu div{
+  margin-top: 10px;
   text-align: right;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-size: 22px;
+  cursor: pointer;
 }
 
 
 @media (min-width: 992px){
 
 .activity300 .intro{
-  padding:0px 40px;
+  padding: 0px 40px;
 }
 
 .activity300 .activity300-cuidados-intro {

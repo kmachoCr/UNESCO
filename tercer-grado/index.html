@@ -75,46 +75,19 @@
       <h2 class="activity300title">Órganos del sistema digestivo</h2>
       <div class="row">
         <div class="col-4 descripcion">
-          <div class="boca">
-            <img src="../images/lab3/cuidados/lab03-sli-flecha-der.png" alt="ilustración del órgano del sistsema digestivo: Boca">
-            <h3>Boca</h3>
-            <p>Es el lugar de entrada de los alimentos al organismo. En ella se encuentran los dientes que con ayuda de las glándulas salivales y la lengua  trituran los alimentos.</p>
-          </div>
-          
-<!--        <h3>Faringe</h3>
-            <p>Canal que permite la comunicación entre la boca y el esófago. También forma parte del sistema respiratorio.</p>
-          
-            <h3>Esófago</h3>
-            <p>Es un tubo que se encarga de transportar el bolo alimenticio de la faringe al estómago.</p>
-          
-            <h3>Estómago</h3>
-            <p>Es una bolsa musculosa en forma de J. En él se secreta el jugo gástrico.</p>
-          
-            <h3>Hígado</h3>
-            <p>Es un órgano que segrega bilis, una sustancia que ayuda a digerir las grasas.</p>
-         
-            <h3>Páncreas</h3>
-            <p>Es un órgano que segrega jugo pancreático, el cual ayuda en la digestión de azúcares, grasas y proteínas.</p>
-          
-            <h3>Intestino delgado</h3>
-            <p>Es donde se produce la mayor parte de la digestión, ya que junto con la bilis y el jugo pancreático, se encarga de absorber los nutrientes de los alimentos.</p>
-          
-            <h3>Intestino grueso</h3>
-            <p>Es un tubo grueso y corto que rodea al intestino delgado. Se encarga de expulsar los residuos al exterior del cuerpo.</p> -->
-          </div>
-
+          <div v-show="selectedOrgan.name">
+            <img :src="`../images/lab3/lab03-icn-${selectedOrgan.code}.png`" :alt="`Ilustración del órgano del sistsema digestivo: ${selectedOrgan.name}`">
+            <h3>{{selectedOrgan.name}}</h3>
+            <p>{{selectedOrgan.description}}</p>
+          </div>    
+        </div>
         <div class="col-3 organos-menu">
-          <div class="btn-boca">Boca</div>
-          <div class="btn-faringe">Faringe</div>
-          <div class="btn-esofago">Esófago</div>
-          <div class="btn-estomago">Estómago</div>
-          <div class="btn-higado">Hígado</div>
-          <div class="btn-pancreas">Páncreas</div>
-          <div class="btn-delgdo">Intestino delgado</div>
-          <div class="btn-grueso">Intestino grueso</div>
+          <div class="btn-boca" @click="onSelectOrgan(index)" v-for="(organ, index) in organs" :key="index" >
+            <img style="height: 50px;" :src="organ.selected? organ.btnImageActive :  organ.hovered? organ.btnImageHover : organ.btnImage" @mouseout='mouseout(index)' @mouseover="mouseover(index)" alt="">
+          </div>
         </div>
         <div class="col-5">
-          <img src="../images/lab3/lab03-fig.svg" alt="exploratoria" class="img-fluid">
+          <img :src="selectedOrgan.name ? `../images/lab3/lab03-bk_${selectedOrgan.code}.png` : `../images/lab3/lab03-fig.svg`" alt="exploratoria" class="img-fluid">
         </div>
       </div> 
     </div>
@@ -182,8 +155,7 @@
         </div>
         <div class="col-md-6">
            <div class="slider-container">
-              <div id="carouselExampleControls" class="carousel slide" data-ride="carousel"
-                            data-interval="false">
+              <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
                   <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img class="d-block w-100" src="../images/lab3/cuidados/lab03-sli-ficha1.png" alt="First slide">
@@ -195,19 +167,19 @@
                       <img class="d-block w-100" src="../images/lab3/cuidados/lab03-sli-ficha1.png" alt="First slide">
                     </div>
                   </div>
-                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
-                                data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselExampleControls" role="button"
-                                data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
-                        <p class="text-center mt-3 font-color-4D">Da clic sobre las flechas para conocer más.</p>
-                    </div>
+                  <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                      data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                      data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                  </a>
+              </div>
+              <p class="text-center mt-3 font-color-4D">Da clic sobre las flechas para conocer más.</p>
+          </div>
         </div>
       </div>        
     </div>
@@ -219,27 +191,38 @@
     var app2 = new Vue({
       el: '#app-2',
       data: {
-        cycles: activity2.cycles,
-        selectedCycle: {},
-        orderedCycle: {},
-        hideMenu: false,
+        organs: activity3.organs,
+        selectedOrgan: {} ,
         page: 0,
         placedList: [true, true, true, true, true],
         placedDropzone: [false, false, false, false, false],
         stepList: [2, 5, 1, 3, 4],
       },
-      mounted() {
-
-      },
-      watch: {
-        selectedCycle: {
-          deep: true,
-          handler(value) {
-            this.hideMenu = this.selectedCycle.cycle && this.selectedCycle.cycle.length > 0;
-          }
-        }
+      created() {
+        this.selectedOrgan = this.organs[0];
+        this.organs.forEach((organ)=> {
+          organ.btnImage = `../images/lab3/lab03-btn-${organ.code}.svg`;
+          organ.btnImageActive = `../images/lab3/lab03-btn-${organ.code}_active.svg`;
+          organ.btnImageHover = `../images/lab3/lab03-btn-${organ.code}_hover.svg`;
+        });
       },
       methods: {
+        mouseover(index) {
+          this.organs[index].hovered = true; 
+          this.$forceUpdate();
+        },
+        mouseout(index) {
+          this.organs[index].hovered = false; 
+          this.$forceUpdate();
+        },
+        
+        onSelectOrgan(index){
+          this.selectedOrgan = this.organs[index];
+          this.organs.forEach((organ)=> {
+            organ.selected = false;
+          });
+          this.organs[index].selected = true; 
+        },
         goTo(page){
           this.page = page;
         },

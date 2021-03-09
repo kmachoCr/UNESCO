@@ -1,226 +1,52 @@
-const activity2 = {
-  cycles: [
+const activity3 = {
+  organs: [
     {
-      name: 'Gallina',
-      title: 'La gallina',
-      image: '../images/Lab2/lab02-card-gallina.svg',
-      code: 'gallina',
-      cycle: [
-        {
-          step: 2,
-          name: 'Crece y se desarrolla',
-          code: 'ga-2',
-          image: '../images/Lab2/lab02-icon-pollito-comiendo.svg',
-        },
-        {
-          step: 4,
-          name: 'Muere',
-          code: 'ga-4 ',
-          image: '../images/Lab2/lab02-icon-gallina-vieja.svg',
-        },
-        {
-          step: 3,
-          name: 'Se reproduce',
-          code: 'ga-3',
-          image: '../images/Lab2/lab02-icon-gallina-nido.svg',
-        },
-        {
-          step: 1,
-          name: 'Nace',
-          code: 'ga-1',
-          image: '../images/Lab2/lab02-icon-huevo-naciendo.svg',
-        },
-      ],
+      name: 'Boca',
+      code: 'boca',
+      description: 'Es el lugar de entrada de los alimentos al organismo. En ella se encuentran los dientes que con ayuda de las glándulas salivales y la lengua  trituran los alimentos.',
+      selected: false
     },
     {
-      name: 'Mariposa',
-      title: 'La Mariposa',
-      image: '../images/Lab2/lab02-card-mariposa.svg',
-      code: 'mariposa',
-      cycle: [
-        {
-          step: 1,
-          name: 'Nace',
-          code: 'ma-1',
-          image: '../images/default.png',
-        },
-        {
-          step: 2,
-          name: 'Crece y se desarrolla',
-          code: 'ma-2',
-          image: '../images/default.png',
-        },
-        {
-          step: 3,
-          name: '',
-          code: 'ma-3',
-          image: '../images/default.png',
-        },
-        {
-          step: 4,
-          name: 'Se reproduce',
-          code: 'ma-4 ',
-          image: '../images/default.png',
-        },
-        {
-          step: 5,
-          name: 'Muere',
-          code: 'ma-5 ',
-          image: '../images/default.png',
-        },
-      ],
+      name: 'Faringe',
+      code: 'faringe',
+      description: 'Canal que permite la comunicación entre la boca y el esófago. También forma parte del sistema respiratorio.',
+      selected: false
     },
     {
-      name: 'Humano',
-      title: 'Humano',
-      image: '../images/Lab2/lab02-card-humanos.svg',
-      code: 'mariposa',
-      cycle: [
-        {
-          step: 1,
-          name: 'Nace',
-          code: 'ma-1',
-          image: '../images/default.png',
-        },
-        {
-          step: 2,
-          name: 'Crece y se desarrolla',
-          code: 'ma-2',
-          image: '../images/default.png',
-        },
-        {
-          step: 3,
-          name: '',
-          code: 'ma-3',
-          image: '../images/default.png',
-        },
-        {
-          step: 4,
-          name: 'Se reproduce',
-          code: 'ma-4 ',
-          image: '../images/default.png',
-        },
-        {
-          step: 5,
-          name: 'Muere',
-          code: 'ma-5 ',
-          image: '../images/default.png',
-        },
-      ],
+      name: 'Esófago',
+      code: 'esofago',
+      description: 'Canal que permite la comunicación entre la boca y el esófago. También forma parte del sistema respiratorio.',
+      selected: false
     },
     {
-      name: 'Arbol',
-      title: 'Árbol de naranja',
-      image: '../images/Lab2/lab02-card-arbol.svg',
-      code: 'mariposa',
-      cycle: [
-        {
-          step: 1,
-          name: 'Nace',
-          code: 'ma-1',
-          image: '../images/default.png',
-        },
-        {
-          step: 2,
-          name: 'Crece y se desarrolla',
-          code: 'ma-2',
-          image: '../images/default.png',
-        },
-        {
-          step: 3,
-          name: '',
-          code: 'ma-3',
-          image: '../images/default.png',
-        },
-        {
-          step: 4,
-          name: 'Se reproduce',
-          code: 'ma-4 ',
-          image: '../images/default.png',
-        },
-        {
-          step: 5,
-          name: 'Muere',
-          code: 'ma-5 ',
-          image: '../images/default.png',
-        },
-      ],
+      name: 'Estómago',
+      code: 'estomago',
+      description: 'Es una bolsa musculosa en forma de J. En él se secreta el jugo gástrico.',
+      selected: false
     },
     {
-      name: 'Rana',
-      title: 'La Rana',
-      image: '../images/Lab2/lab02-card-rana.svg',
-      code: 'mariposa',
-      cycle: [
-        {
-          step: 1,
-          name: 'Nace',
-          code: 'ma-1',
-          image: '../images/default.png',
-        },
-        {
-          step: 2,
-          name: 'Crece y se desarrolla',
-          code: 'ma-2',
-          image: '../images/default.png',
-        },
-        {
-          step: 3,
-          name: '',
-          code: 'ma-3',
-          image: '../images/default.png',
-        },
-        {
-          step: 4,
-          name: 'Se reproduce',
-          code: 'ma-4 ',
-          image: '../images/default.png',
-        },
-        {
-          step: 5,
-          name: 'Muere',
-          code: 'ma-5 ',
-          image: '../images/default.png',
-        },
-      ],
+      name: 'Hígado',
+      code: 'higado',
+      description: 'Es un órgano que segrega bilis, una sustancia que ayuda a digerir las grasas.',
+      selected: false
     },
     {
-      name: 'Hongo',
-      title: 'El Hongo',
-      image: '../images/Lab2/lab02-card-hongo.svg',
-      code: 'mariposa',
-      cycle: [
-        {
-          step: 1,
-          name: 'Nace',
-          code: 'ma-1',
-          image: '../images/default.png',
-        },
-        {
-          step: 2,
-          name: 'Crece y se desarrolla',
-          code: 'ma-2',
-          image: '../images/default.png',
-        },
-        {
-          step: 3,
-          name: '',
-          code: 'ma-3',
-          image: '../images/default.png',
-        },
-        {
-          step: 4,
-          name: 'Se reproduce',
-          code: 'ma-4 ',
-          image: '../images/default.png',
-        },
-        {
-          step: 5,
-          name: 'Muere',
-          code: 'ma-5 ',
-          image: '../images/default.png',
-        },
-      ],
+      name: 'Páncreas',
+      code: 'pancreas',
+      description: 'Es un órgano que segrega jugo pancreático, el cual ayuda en la digestión de azúcares, grasas y proteínas.',
+      selected: false
+    },
+    {
+      name: 'Intestino delgado',
+      code: 'int-delgado',
+      description: 'Es donde se produce la mayor parte de la digestión, ya que junto con la bilis y el jugo pancreático, se encarga de absorber los nutrientes de los alimentos.',
+      selected: false
+    },
+    {
+      name: 'Intestino grueso',
+      code: 'int-grueso',
+      description: 'Es un tubo grueso y corto que rodea al intestino delgado. Se encarga de expulsar los residuos al exterior del cuerpo.',
+      selected: false
     },
   ],
 }

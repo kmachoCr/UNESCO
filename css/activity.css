@@ -122,6 +122,23 @@ span.slider-head-title {
   align-items: center;
   justify-content: center;
 }
+.container-slide-video video {
+  height: 400px;
+  border: 0;
+    outline: none;
+}
+
+.container-slide-image--last::after {
+  content: "";
+  background-image: url(../images/lab1/lab01-img-nina-felicidades.png);
+  position: absolute;
+  height: 538px;
+  width: 305px;
+  left: 0px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 145px;
+}
 
 .container-slide-text{
   justify-content: center;
@@ -330,5 +347,7 @@ button.btn-back {
  
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {  
-    
+  .container-slide-video video{
+    height: 500px;
+  }
 }

@@ -46,38 +46,35 @@
   <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-wrap="false">
     <div class="carousel-inner" id="app-4">
 
-      <div class="carousel-item px-4" :class="{'active': index === 0}" v-for="(slide, index) in intros" :key="index">
+      <div class="carousel-item px-4 active">
         <div class="row">
           <div class="col-12">
             <div class="container-slide-head">
-              <span class="slider-head-title" v-if="slide.title">{{slide.title}}</span>
+              
             </div>
           </div>
           <div class="container-slide col">
             <div class="row">
-              <div class="col-7">
-                <div class="container-slide-image">
-                  <img :src="slide.image" style="width: 300px; margin: auto; display: block;">
+              <div class="col-12">
+                <div class="container-slide-video">
+                  <video controls autoplay @ended="onEnd()">
+                    <source src="../videos/lab01-video-intro.mp4" type="video/mp4" >
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
-              </div>
-              <div class="col">
-                <div class="container-slide-text d-flex h-100">
-                  <p class="font-size-24" v-for="(string, indexStrings) in slide.strings" :key="indexStrings">{{string}}</p>
-                </div>
-
               </div>
             </div>
 
           </div>
           <div class="col-12">
-            <button class="float-right btn activity-control-next" href="#carouselExampleControls" role="button"
+            <a class="float-right activity-control-next" href="#carouselExampleControls" role="button"
               data-slide="next">
-              Siguiente
-            </button>
+              <img src="../images/lab1/lab01-btn-jugar.svg" v-show="isEnded" style="width: 180px;" alt="">
+          </a>
           </div>
         </div>
       </div>
-      <div class="carousel-item px-4" :class="{'active': index === 0}" v-for="(slide, index) in slides" :key="index">
+      <div class="carousel-item px-4"  v-for="(slide, index) in slides" :key="index">
         <button class="btn-back" @click="prevSlide">
               Regresar
             </button>
@@ -103,24 +100,21 @@
       </div>
       <div class="carousel-item px-4">
         <div class="row">
-          <div class="col-12">
-            <div class="container-slide-head"></div>
-          </div>
           <div class="container-slide col">
             <div class="row">
               <div class="col">
-                <div class="container-slide-image">
-                  <img src="../images/lab1/Todo.png" class="w-100">
+                <div class="container-slide-image container-slide-image--last">
+                  <img src="../images/lab1/lab01-img-completa.png" class="w-100">
                 </div>
               </div>
             </div>
 
           </div>
           <div class="col-12">
-            <button class="mx-auto d-block btn activity-control-next" href="#carouselExampleControls" @click="restart()"
+            <a href="#carouselExampleControls" @click="restart()"
               role="button">
-              Volver a empezar
-            </button>
+              <img class="mx-auto d-block" style="width: 250px;" src="../images/lab1/lab01-btn-intentar.svg" alt="">
+          </a>
           </div>
         </div>
       </div>
@@ -155,17 +149,28 @@
         feedbackTitle: '',
         audioFeedback: null,
         isCorrectAnswer: false,
+        isEnded: false,
+        audioSlides: null,
       },
       mounted() {
         $('.carousel').on('slid.bs.carousel', (evt) => {
-    
-          const url = this.intros[evt.to] ? this.intros[evt.to].audio : this.slides[evt.to - this.intros.length].audio;
+          if(this.audioSlides) {
+            this.audioSlides.pause();
+          }
 
-          const audio =   new Audio(url)
-          audio.play();
+          let url = this.intros[evt.to] ? this.intros[evt.to].audio : this.slides[evt.to - 1] ? this.slides[evt.to - 1].audio: '';
+          if(evt.to == 9) {
+            url = "../audios/correct-answer.mp3";
+          }
+          this.audioSlides = new Audio(url);
+          this.audioSlides.play();
         });
       },
       methods: {
+        onEnd(){
+          this.isEnded = true;
+          this.$forceUpdate();
+        },
         startDrag: (evt, index, indexOptions) => {
           evt.dataTransfer.dropEffect = 'move';
           evt.dataTransfer.effectAllowed = 'move';
@@ -191,6 +196,7 @@
 
           this.audioFeedback.play();
           this.$refs.option[(index * 3) + indexOptions].classList.add(classToAdd);
+          this.audioSlides.pause();
           $('#feedback-modal').modal('show');
         },
         onClickGridCard(index, indexOptions) {
