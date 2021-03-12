@@ -1,0 +1,263 @@
+@font-face {
+  font-family: "Quicksand";
+  src: url("fonts/Quicksand-Regular.ttf") format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("fonts/Quicksand-Bold.ttf") format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+}
+
+.header-mep {
+  background-color: #00A99D;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 35px;
+  border-bottom: 5px solid #E6E6E6;
+}
+
+.header-mep .mep-unesco-logo {
+  display: flex;
+}
+
+.header-mep-icon {
+  height: 80px;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.header-mep-icon img {
+  width: 55px;
+  height: auto;
+}
+
+.header-mep-icon img.mep {
+  width: 100%;
+}
+
+.modal-centered{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  align-items: center;
+  display: flex;
+  width: 800px;
+}
+
+.modal-centered .modal-content{
+  height: auto;
+  padding: 50px 20px;
+  text-align: center;
+}
+.activity200 {
+  padding: 60px 30px;
+  position: relative;
+}
+
+.activity200 .activity200-intro{
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 30px;
+  color: #4D4D4D;
+}
+
+.activity200 .activity200-instructions{
+  font-size: 19px;
+  color: #666666;
+}
+
+.activity200 .activity200-menu{
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  max-width: 760px;
+  margin: auto;
+}
+
+.activity200 .activity200-menu--item{
+  flex: 1 1 50%;
+  max-width: 50%;
+  margin: 0 0 30px 0;
+  display: flex;
+  
+}
+
+.activity200 .activity200-menu--item-container{
+
+  margin: auto;
+  text-align: center;
+  cursor: pointer;
+}
+
+.activity200 .activity200-menu--item-container img {
+  width: 240px;
+  margin: auto;
+  display: block;
+  transition: transform 0.3s ease-in-out; 
+}
+
+.activity200 .activity200-menu--item-container img:hover {
+  transform: scale(1.05);
+}
+
+
+.activity200 .activity200-cycle-title {
+  color: #00A99D;
+  font-size: 38px;
+  font-weight: 700;
+}
+
+.activity200 .h2-especie{
+  background: #00A99D;
+  font-weight: 900;
+  font-size: 38px;
+  padding:5px;
+  color:#fff;
+  border-radius: 8px;
+}
+
+.activity200 .activity200-cycle-subtitle {
+  font-size: 21px;
+  color: #666666;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.activity200 .activity200-cycle-instruction {
+  font-size: 19px;
+}
+
+.activity200 .activity200-cycle-go-back {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  cursor: pointer;
+} 
+
+.activity200 .activity200-cycle-go-back img {
+  width: 150px;
+} 
+
+.activity200 .activity200-cycle-go-back::after{
+  content: "";
+  background-image: url(../images/Lab2/lab02-btn-regresar.svg);
+
+}
+
+.activity200 .activity200-cycle,
+.activity200-dropzone-label,
+.activity200 .activity200-dropzone {
+  display: flex;
+  justify-content: center ;
+}
+.activity200 .activity200-cycle {
+  margin-bottom: 30px ;
+}
+
+.activity200 .activity200-cycle--item,
+.activity200 .activity200-dropzone--item {
+  margin: 0 10px 0 0;
+}
+
+.activity200-dropzone-label--item {
+  width: 200px;
+  margin: auto 43px;
+  text-align: center;
+  color: #666;
+  font-size: 21px;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+/*.activity200-dropzone-label--item-double .activity200-dropzone-label--item-container {
+  width: 500px;
+}*/
+
+.activity200 .activity200-cycle--item-container {
+  margin: auto;
+  text-align: center;
+  cursor: pointer;
+}
+
+.activity200 .activity200-dropzone--item-container {
+  height: 200px;
+  width: 200px;
+  margin: auto 35px;
+  border: 5px dashed #FBB03B;
+  border-radius: 15px;
+  text-align: center;
+  display: flex;
+  cursor: pointer;
+  position: relative;
+}
+
+.activity200 .activity200-dropzone--item:not(:first-child) .activity200-dropzone--item-container:after {
+  content: "";
+  background: url(../images/Lab2/lab02-btn-flecha.svg) no-repeat;
+  width: 40px;
+  height: 40px;
+  background-size: contain;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+  left: -63px;
+  position: absolute;
+}
+
+.activity200 .activity200-dropzone--item-container {
+  height: 200px;
+}
+
+
+.activity200 .activity200-cycle--item-container img,
+.activity200 .activity200-dropzone--item-container img {
+  height: 150px;
+  width: 150px;
+  margin: auto;
+  display: block; 
+}
+
+.activity200-modal-button-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.activity200-modal .activity200-modal-title {
+  color: #009245;
+  font-size: 50px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.activity200-modal .activity200-modal-message  {
+  font-weight: 700;
+  font-size: 32px;
+  color: #4D4D4D;
+  max-width: 65%;
+  margin: 0 auto 35px;
+}
+
+.activity200-modal .activity200-modal-button img {
+  height: 73px;
+  cursor: pointer;
+}
+
+.activity200-modal .activity200-modal-button.bigger img {
+  height: 90px;
+}
+

@@ -1,0 +1,422 @@
+@font-face {
+  font-family: "Quicksand";
+  src: url("fonts/Quicksand-Regular.ttf") format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("fonts/Quicksand-Bold.ttf") format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+}
+
+.line-height-normal{
+  line-height: normal;
+}
+
+.font-color-4D{
+  color: #4d4d4d;
+}
+
+.font-size-24{
+  font-size: 24px;
+}
+
+.header-mep {
+  background-color: #FBB03B;
+  box-shadow: 0px 5px #e6e6e6;
+}
+
+span.slider-head-title {
+  color: #0071bc;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.header-mep-icon {
+  height: 80px;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.header-mep-icon img {
+  width: 55px;
+  height: auto;
+}
+
+.header-mep-icon img.mep {
+  width: 100%;
+}
+
+.activity-grid {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  flex-direction: row;
+  border-radius: 5px;
+}
+
+.activity-grid-item {
+  border: #F7931E solid 5px;
+  width: 100%;
+  /* max-width: 300px;
+  height: 150px; */
+  max-width: 195px;
+  height: 115px;
+  z-index: 9;
+  background-color: #fff;
+  box-shadow: 5px 5px #e6e6e6;
+}
+
+.activity-grid-item:first-child {
+  border-radius: 7px 0px 0px 7px;
+  border-right: none;
+}
+
+.activity-grid-item:last-child {
+  border-radius: 0px 7px 7px 0px;
+  border-left: none;
+}
+
+.activity-grid-item-element{
+  height: 100%;
+  max-width: 110%;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding: 10px;
+  background: linear-gradient( 
+    0deg
+     , rgb(0 0 0 / 11%) 0%, rgba(255,255,255,1) 20%);
+}
+
+.activity-grid-item-element:hover{
+  background-color: burlywood;
+}
+
+.activity-grid-item-element img {
+  height: 100%;
+  max-width: 180px;
+}
+
+.activity-grid-item-element p{
+  position: absolute;
+}
+
+.activity-grid-item-element-valid{
+  border-color:green;
+  cursor: pointer;
+}
+
+.activity-grid-item-element-invalid{
+  border-color: rgb(110, 14, 14);
+  background-color: rgba(190, 16, 16, 0.5);
+}
+
+.activity-grid-item-element:hover{
+  
+  cursor: pointer;
+}
+
+.container-slide{
+  height: calc(100vh - 170px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container-slide-video video {
+  height: 400px;
+  border: 0;
+  outline: none;
+}
+
+.container-slide-image--last::after {
+  content: "";
+  background-image: url(../images/lab1/lab01-img-nina-felicidades.png);
+  position: absolute;
+  height: 330px;
+  width: 200px;
+  left: 0px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 25px;
+}
+
+.container-slide-text{
+  justify-content: center;
+  flex-direction: column;
+}
+.container-slide-head{
+  height: 50px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-centered{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  align-items: center;
+  display: flex;
+  width: 600px;
+}
+
+.modal-centered .modal-content{
+  /* height: 320px; */
+  padding: 45px 30px;
+  text-align: center; 
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 15px;
+} 
+
+
+.carousel-item h2.carousel-item-answer {
+  background-color: rgb(0, 113, 188);
+  display: inline-block;
+  padding: 10px 15px 15px 80px;
+  color: #fff;
+  border-radius: 15px;
+  margin-top: 15px;
+  position: relative;
+  background-image: url(./../images/lab1/lab01-icon-audio.svg);
+  background-repeat: no-repeat;
+  background-size: 55px;
+  background-position-y: center;
+  background-position-x: 15px;
+  font-weight: 900;
+}
+
+
+.carousel-item-image {
+  padding: 20px 0;
+}
+
+.carousel-item-image img {
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom;
+  width: 100%;
+}
+
+button.btn-back {
+  color: #0071bc;
+  background: transparent;
+  border: navajowhite;
+  font-weight: 900;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  background-image: url(./../images/lab1/lab01-btn-regresar.svg);
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position-y: center;
+  background-position-x: 0;
+  padding: 0 0 0 30px;
+  z-index: 1;
+}
+
+.feedback-modal .feedback-modal-title span {
+  position: relative;
+  font-weight: 900;
+  font-size: 1.5em;
+}
+.feedback-modal .feedback-modal-title span::after {
+  content: "";
+    background-image: url(../images/lab1/lab01-icon-audio.svg);
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    left: -50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: 7px;
+}
+
+.feedback-modal .feedback-modal-title-correct {
+  color: #009245;
+}
+
+.feedback-modal .feedback-modal-title-incorrect {
+  color: #C1272D;
+}
+.feedback-modal .feedback-modal-button, .btn-nextSlide-first {
+  border: none;
+  color: #fff;
+  display: inline-block;
+  width: 300px;
+  height: 55px;
+  margin: 0px auto;
+  /* font-size: 1.4em; */
+  padding: 8px;
+  border-radius: 5px;
+  font-size: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.feedback-modal .feedback-modal-button-correct, .btn-nextSlide-first {
+  /* background-color: #087DC4; */
+  background-image: url(./../images/lab1/lab01-btn-continuar.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.feedback-modal .feedback-modal-button-incorrect {
+  /* background-color: #892C88; */
+  background-image: url(./../images/lab1/lab01-btn-intentar.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+a.activity-control-next {
+    position: fixed;
+    bottom: 50px;
+    right: 70px;
+}
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {  
+
+  .container-slide-image--last::after {
+  height: 280px;
+  width: 200px;
+  left: 0px;
+  top: 15px;
+}
+ 
+}
+ 
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+  .header-title{
+    width: 68%;
+  }
+
+  .activity-grid {
+    height: calc(100vh - 180px);
+  }
+
+  .carousel-item-image {
+    height: calc(100vh - 262px);
+  }
+
+  .carousel-item-image {
+    padding: 20px 0px 0 20px;
+  }
+
+  .carousel-item h2.carousel-item-answer::after {
+    content: "";
+    background-image: url(../images/lab1/lab01-nina.svg);
+    position: absolute;
+    /* left: -304px;
+    height: 445px;
+    width: 317px; */
+    left: -166px;
+    height: 439px;
+    width: 147px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .carousel-item h2.carousel-item-answer::before {
+    content: "";
+    width: 0;
+    height: 0;
+    /* left: -45px;
+    top: 33px; */
+    left: -39px;
+    top: 13px;
+    border-style: solid;
+    /* border-width: 0 0 45px 45px; */border-width: 0 0 40px 40px;
+    border-color: transparent transparent rgb(0, 113, 188) transparent;
+    position: absolute;
+  }
+  .carousel-item h2.carousel-item-answer {
+    /* width: 469px; */
+    width: 769px;
+  }
+
+  .activity-grid {
+    flex-direction: column;
+  }
+
+  .activity-grid-item:first-child {
+    border: #F7931E solid 5px;
+    border-radius: 7px 7px 0px 0px;
+    border-bottom: none;
+  }
+  
+  .activity-grid-item:last-child {
+    border: #F7931E solid 5px;
+    border-radius: 0px 0px 7px 7px;
+    border-top: none;
+  }
+
+  .container-slide-image--last::after {
+  content: "";
+  background-image: url(../images/lab1/lab01-img-nina-felicidades.png);
+  position: absolute;
+  height: 530px;
+  width: 305px;
+  left: 0px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 145px;
+}
+}
+ 
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {  
+  .container-slide-video video{
+    height: 400px;
+  }
+
+  .container-slide-image--last::after {
+    height: 400px;
+    width: 225px;
+    left: 100px;
+    top: 70px;
+    }
+
+.container-slide-image.container-slide-image--last {
+    text-align: center;
+    }
+
+.container-slide-image.container-slide-image--last img {
+    width: 68%!important;
+  }
+}
+
+@media (min-width: 1500px) {  
+  .container-slide-video video{
+    height: 500px;
+  }
+
+  .container-slide-image.container-slide-image--last img {
+    width: 90%!important;
+  }
+
+  .container-slide-image--last::after {
+  height: 530px;
+  width: 305px;
+  left: 0px;
+  top: 145px;
+}
+}

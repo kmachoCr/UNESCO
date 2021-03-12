@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel='shortcut icon' type='image/x-icon' href='images/Lab2/lab02-favicon.ico' />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="El ciclo de vida" />
+  <meta property="og:description" content="El ciclo de vida es el proceso natural por el que atraviesan todos los seres vivos desde que nacen hasta que mueren." />
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/activity2.css">
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="js/jquery-3.2.1.slim.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/vue.js"></script>
+  <title>¡Exploremos los ciclos de vida de algunos seres vivos</title>
+</head>
+
+<body>
+  <header class="header-mep">
+    <div class="header-title-image d-flex"><img src="images/Lab2/lab02-title.svg" style="width: 400px;" alt="¡Exploremos los ciclos de vida de algunos seres vivos"></div>
+    <div class="mep-unesco-logo">
+      <div class="header-mep-icon"><a href="https://www.mep.go.cr/" target="_blank"><img src="images/logo-mep.svg" alt="Logo MEP"></a></div>
+      <div class="header-mep-icon"><img src="images/logo-politica-eds.png" alt="Logo EDS"></div>
+    </div>
+  </header>
+  <div id="app-2" class="activity200">
+    <a class="activity200-cycle-go-back" v-show="hideMenu" @click="cleanActivity(true)"><img src="images/Lab2/lab02-btn-regresar.svg" alt=""></a>
+    <div class="container" v-show="!hideMenu">
+      <div class="row">
+        <div class="col">
+          <div class="text-center">
+
+            <h2 class="activity200-intro">El ciclo de la vida es el proceso natural por el que atraviesan todos los seres vivos desde que nacen hasta que mueren. Está divido en cuatro etapas principales: nacimiento, crecimiento y desarrollo, reproducción y muerte.</h4>
+            <p class="activity200-instructions">Seleccioná un ser para conocer su ciclo de vida:</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col activity200-menu">
+          <div class="activity200-menu--item" v-for="(cycle, index) in cycles" :key="index">
+            <div class="activity200-menu--item-container" @click="selectCycle(index)">
+              <img :src="cycle.image" alt="">
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid" v-show="hideMenu">
+      <div class="row">
+        <div class="col">
+          <div class="text-center">
+            <h2 class="activity200-cycle-title">¿Cuál es el ciclo de vida de <span class="h2-especie">{{selectedCycle.title}}</span>?</h2>
+            <h4 class="activity200-cycle-subtitle d-none">¿Cuál es el ciclo de vida de {{selectedCycle.title ? selectedCycle.title.toLowerCase() : ''}}? </h4>
+            <p class="activity200-cycle-instruction">Arrastrá las imágenes a las casillas según el orden correcto.</p>
+          </div>
+        </div>
+      </div>
+      <div class="">
+        <div class="activity200-cycle">
+          <div class="activity200-cycle--item" :class="`activity200-cycle--item-${selectedCycle.code}-${cycle.step}`"
+            v-for="(cycle, index) in selectedCycle.cycle" :key="index">
+            <div class="activity200-cycle--item-container" draggable
+              @dragstart='startDrag($event, `${selectedCycle.code}-${cycle.step}`, index)'>
+              <img :src="cycle.image" v-if="!cycle.placed" alt="">
+            </div>
+
+          </div>
+        </div>
+        <div class="activity200-dropzone">
+          <div class="activity200-dropzone--item" :class="`activity200-dropzone--item-${orderedCycle.code}-${index+1}`"
+            v-for="(cycle, index) in orderedCycle.cycle" :key="index">
+            <div class="activity200-dropzone--item-container"
+              @drop='onDrop($event, orderedCycle.code, `${orderedCycle.code}-${index+1}`)' @dragover.prevent
+              @dragenter.prevent>
+              <img :src="cycle.image" v-if="orderedCycle.cycle[index].placed" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="activity200-dropzone-label">
+          <div class="activity200-dropzone-label--item" :class="{'activity200-dropzone-label--item-double': ['mariposa'].includes(orderedCycle.code) && index === 1}" v-for="(cycle, index) in orderedCycle.cycle" :key="index">
+            <div class="activity200-dropzone-label--item-container" >
+              <p>{{cycle.name}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade bd-example-modal-lg activity200-modal" tabindex="-1" role="dialog" id="activity200-modal" data-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-centered">
+          <div class="modal-content">
+
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-12">
+                  <p class="activity200-modal-title">¡Muy bien!</p>
+                  <p class="activity200-modal-message">Has completado el ciclo de vida de {{selectedCycle.title ? selectedCycle.title.toLowerCase() : ''}}.</p>
+                </div>
+                <div class="col activity200-modal-button-container">
+                  <a class="activity200-modal-button" @click="cleanActivity()"><img src="images/Lab2/lab02-btn-repetir.svg" alt=""></a>
+
+                  <a class="activity200-modal-button bigger" @click="cleanActivity(true)"><img src="images/Lab2/lab02-btn-explorarotro.svg" alt=""></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="js/conf/200_ACT/activity200.js"></script>
+  <script>
+    var app2 = new Vue({
+      el: '#app-2',
+      data: {
+        cycles: activity2.cycles,
+        selectedCycle: {},
+        orderedCycle: {},
+        hideMenu: false,
+      },
+      mounted() {
+
+      },
+      watch: {
+        selectedCycle: {
+          // This will let Vue know to look inside the array
+          deep: true,
+
+          // We have to move our method to a handler field
+          handler(value) {
+            this.hideMenu = this.selectedCycle.cycle && this.selectedCycle.cycle.length > 0;
+          }
+        }
+      },
+      methods: {
+        startDrag: (evt, code) => {
+          evt.dataTransfer.dropEffect = 'move';
+          evt.dataTransfer.effectAllowed = 'move';
+          evt.dataTransfer.setData('code', code);
+        },
+        onDrop(evt, cycleCode, dropCode) {
+          const dragCode = evt.dataTransfer.getData('code');
+          let audio = null;
+          
+          if (dropCode === dragCode) {
+            const index = this.selectedCycle.cycle.findIndex(element => `${cycleCode}-${element.step}` === dropCode);
+            this.selectedCycle.cycle[index].placed = true;
+            this.$forceUpdate();
+            audio = new Audio("audios/correct-answer.mp3");
+          }else {
+            audio = new Audio("audios/wrong-answer.mp3");
+          }
+          audio.play();
+          if (this.selectedCycle.cycle.every(elem => elem.placed)) {
+            $('#activity200-modal').modal('show');
+          }
+        },
+        selectCycle(index) {
+          this.selectedCycle = this.cycles[index];
+
+          this.orderedCycle = {...this.selectedCycle};
+          this.orderedCycle.cycle = [...this.selectedCycle.cycle].sort(function (a, b) {
+            if (a.step > b.step) {
+              return 1;
+            }
+            if (a.step < b.step) {
+              return -1;
+            }
+            // a must be equal to b
+            return 0;
+          });
+          
+          this.$forceUpdate();
+
+        },
+        cleanActivity(goBack) {
+
+          $('#activity200-modal').modal('hide');
+          this.selectedCycle.cycle.forEach((element, index) => {
+            element.placed = false;
+
+          });
+          if (goBack) {
+            this.selectedCycle = {};
+          }
+          this.$forceUpdate();
+        }
+      },
+    });
+  </script>
+</body>
+
+</html>
