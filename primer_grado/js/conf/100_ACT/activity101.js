@@ -52,7 +52,7 @@ const activity101 = {
           name: '',
           image: 'images/lab1/lab01-icon-cerca.svg',
           isCorrect: false,
-          feedback: '¡Mmm... creo que estás un poco confundido! Las cercas de madera son construidas por las personas por lo que no son elementos naturales.',
+          feedback: '¡No te confundas! Las cercas de madera son construidas por las personas por lo que no son elementos naturales.',
           audio: 'audios/01-feedback-1-cerca.mp3',
         },
         {
@@ -122,7 +122,7 @@ const activity101 = {
           name: 'Nube',
           image: 'images/lab1/lab01-icon-nube.svg',
           isCorrect: false,
-          feedback: 'Aunque las nubes anden por el aire, no lo respiran. Son objetos compuestos por gotas de agua. ',
+          feedback: 'Aunque las nubes anden por el aire, no lo respiran. Están compuestas por gotas de agua.',
           audio: 'audios/03-feedback-nubes.mp3',
         },
       ],
@@ -150,7 +150,7 @@ const activity101 = {
           name: 'Árbol',
           image: 'images/lab1/lab01-icon-arbol.svg',
           isCorrect: true,
-          feedback: 'Los árboles respiran mediante sus hojas y producen su propio alimento al absorber nutrientes del suelo por sus raíces.',
+          feedback: 'Los árboles respiran mediante sus hojas, aprovechan la luz del sol para producir su propio alimento y absorben nutrientes por sus raíces.',
           audio: 'audios/04-feedback-arbol.mp3',
         },
       ],
@@ -164,7 +164,7 @@ const activity101 = {
           name: 'Sol',
           image: 'images/lab1/lab01-icon-sol.svg',
           isCorrect: false,
-          feedback: '¡Casi, casi, pero no! El Sol sí es un ser inerte, sin embargo, es natural, o sea, no fue creado por el ser humano.',
+          feedback: '¡Casi, casi, pero no!  El sol es un elemento natural, sin embargo, no tiene vida. El sol es una estrella y no fue creada por el ser humano.',
           audio: 'audios/05-feedback-sol.mp3',
         },
         {
@@ -184,7 +184,7 @@ const activity101 = {
       ],
     },
     {
-      title: 'Seleccioná un ser vivo que ocupa aire para vivir, como vos y como yo, pero que aguanta la respiración bajo el agua',
+      title: 'Seleccioná un ser vivo que necesita oxígeno para vivir, como vos y como yo, pero que puede aguantar la respiración bajo el agua.',
       image: "images/lab1/lab01-landscape-cerca.png",
       audio: 'audios/06-ser-vivo-aire.mp3',
       options: [
@@ -192,14 +192,14 @@ const activity101 = {
           name: 'Tortuga marina',
           image: 'images/lab1/lab01-icon-tortuga.svg',
           isCorrect: true,
-          feedback: 'Sabías que las tortugas marinas cuando duermen pueden estar entre 4 y 7 horas bajo el agua.',
+          feedback: '¿Sabías que las tortugas marinas, aunque respiran por los pulmones, pueden permanecer bajo el agua entre 4 y 7 horas mientras duermen?',
           audio: 'audios/06-feedback-tortuga.mp3',
         },
         {
           name: 'Pulpo',
           image: 'images/lab1/lab01-icon-pulpo.svg',
           isCorrect: false,
-          feedback: '¡No! Los pulpos son seres marinos que toman el oxígeno del agua. ',
+          feedback: '¡No! Los pulpos son seres marinos que toman el oxígeno del agua.',
           audio: 'audios/06-feedback-pulpo.mp3',
         },
         {
@@ -212,7 +212,7 @@ const activity101 = {
       ],
     },
     {
-      title: 'Volvamos nuestra mirada para arriba, ¿cuál es un elemento inerte natural que podemos ver en el cielo?',
+      title: 'Mirá hacia arriba, ¿cuál es un elemento inerte natural que podemos ver en el cielo?',
       image: "images/lab1/lab01-landscape-tortuga.png",
       audio: 'audios/07-elemento-inerte-natural-cielo.mp3',
       options: [
@@ -220,7 +220,7 @@ const activity101 = {
           name: 'Avión',
           image: 'images/lab1/lab01-icon-avion.svg',
           isCorrect: false,
-          feedback: '¡Casi, casi, pero no! Acertaste una característica de dos. El avión es un elemento inerte artificial desarrollado por las personas.',
+          feedback: '¡Estuviste cerca!, acertaste una de las dos características. El avión es un elemento inerte artificial desarrollado por las personas.',
           audio: 'audios/07-feedback-avion.mp3',
         },
         {
@@ -234,7 +234,7 @@ const activity101 = {
           name: 'Sol ',
           image: 'images/lab1/lab01-icon-sol.svg',
           isCorrect: true,
-          feedback: 'Con su luz y calor ayuda al crecimiento de plantas y a la vida en la Tierra.',
+          feedback: 'El sol es un elemento inerte natural. Su luz y calor, hacen posible la vida en la tierra.',
           audio: 'audios/07-feedback-sol.mp3',
         },
       ],
@@ -248,7 +248,7 @@ const activity101 = {
           name: 'Lapa roja  ',
           image: 'images/lab1/lab01-icon-laparoja.svg',
           isCorrect: true,
-          feedback: '¡Excelente respuesta! Todos los pájaros son ovíparos,  es decir, nacen de huevos.',
+          feedback: '¡Excelente respuesta! Todas las aves son ovíparas,  es decir, nacen de huevos.',
           audio: 'audios/08-feedback-lapa-roja.mp3',
         },
         {

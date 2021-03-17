@@ -4,15 +4,24 @@ body {
 }
 
 .header-mep {
-  background-color: #93278F;
+  background-color: #F97046;
   display: flex;
-  justify-content: space-between;
+  justify-content:center;
   padding: 10px 35px;
   border-bottom: 5px solid #E6E6E6;
 }
 
-.header-mep .mep-unesco-logo {
+.footer-mep {
+  background-color: #FFEECF;
+  justify-content: space-between;
+  padding: 10px 35px;
+}
+
+.header-mep .mep-unesco-logo{
   display: flex;
+  position: absolute;
+  top: 5px;
+  left: 5px;
 }
 
 .header-mep-icon {
@@ -21,14 +30,25 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #fff;
-  border-radius: 50%;
   margin-left: 10px;
 }
 
-.header-mep-icon img {
-  width: 55px;
+.header-mep-icon img{
+  width: 80px;
   height: auto;
+}
+
+.footer-icon {
+  height: 90px;
+  width: 90px;
+  display: flex;
+  margin-right: 10px;
+}
+
+.footer-icon img {
+  width: 90px;
+  height: auto;
+  display: flex;
 }
 
 .header-mep-icon img.mep {
@@ -181,8 +201,9 @@ h2.activity300title{
   margin-bottom: 30px ;
   background: url(../images/lab3/lab03-fig.svg) no-repeat;
   background-size: cover;
-  min-height: 500px;
-  padding-top: 80px;
+  min-height: 580px;
+  padding-top: 90px;
+  background-position:5px 35px;
 }
 
 .activity300 .activity300-cycle--item,
@@ -239,7 +260,7 @@ h2.activity300title{
 
 .activity300 .activity300-dropzone--item-container {
   width: 100%;
-  max-width: 515px;
+  max-width: 530px;
   border: 3px dashed #FBB03B;
   border-radius: 15px;
   text-align: center;
@@ -259,21 +280,21 @@ h2.activity300title{
   bottom: 0;
   top: 0;
   margin: auto;
-  left: 11px;
-  font-size: 26px;
+  left: -3px;
+  font-size: 23px;
   color: #FBB03B;
   position: absolute;
   font-weight: 700;
 }
 
 .activity300 .activity300-dropzone--item-container {
-  height: 85px;
+  height: 90px;
 }
 
 
 .activity300 .activity300-cycle--item-container img,
 .activity300 .activity300-dropzone--item-container img {
-  height: 65px;
+  height: 80px;
   margin: auto;
   display: block; 
 }
