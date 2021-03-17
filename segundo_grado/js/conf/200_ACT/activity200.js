@@ -5,6 +5,7 @@ const activity2 = {
       title: 'la gallina',
       image: 'images/Lab2/lab02-card-gallina.svg',
       imageFeedback: 'images/Lab2/lab02-card-gallina.svg',
+      feedback: "Sabías que los pollitos se convierten en gallina entre los 4 y 6 meses de edad, a partir de ese momento pueden poner huevos.",
       code: 'gallina',
       cycle: [
         {
@@ -38,6 +39,7 @@ const activity2 = {
       title: 'la mariposa',
       image: 'images/Lab2/lab02-card-mariposa.svg',
       imageFeedback: 'images/Lab2/lab02-card-mariposa.svg',
+      feedback: "Sabías que la mariposa Morpho Azul vive un poco menos de 4 meses, 115 días aproximadamente. ",
       code: 'mariposa',
       cycle: [
                 {
@@ -71,6 +73,7 @@ const activity2 = {
       title: 'un ratón',
       image: 'images/Lab2/lab02-card-raton.svg',
       imageFeedback: 'images/Lab2/lab02-card-raton.svg',
+      feedback: "Desde las seis semanas de vida, los ratones empiezan a reproducirse, y pueden llegar a tener hasta seis camadas de crías por año. ",
       code: 'raton',
       cycle: [
         {
@@ -104,6 +107,7 @@ const activity2 = {
       title: 'un árbol de naranja',
       image: 'images/Lab2/lab02-card-arbol.svg',
       imageFeedback: 'images/Lab2/lab02-card-arbol.svg',
+      feedback: "Sabías que los árboles que nacen de una semilla toman hasta 10 años para dar fruto.",
       code: 'arbol',
       cycle: [
         {

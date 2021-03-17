@@ -105,8 +105,8 @@
       <div class="row">
         <div class="col">
           <div class="text-center">
-
-            <h2 class="activity200-intro">Has completado el ciclo de vida de {{selectedCycle.title ? selectedCycle.title.toLowerCase() : ''}}.</p>
+              <h2 class="activity200-feedback-title">Muy bien!</h2>
+              <p class="activity200-feedback-message">{{selectedCycle.feedback}}</p>
               <img class="activity200-feedback-img" :src="`images/Lab2/lab02-card-${selectedCycle.code}.svg`" alt="">
           </div>
         </div>
@@ -114,8 +114,8 @@
       <div class="row">
         <div class="col activity200-feedback">
           
-          <a class="activity200-modal-button" @mouseover="buttonSound(1)" @click="cleanActivity(false, 1)"><img src="images/Lab2/lab02-btn-repetir.svg" alt=""></a>
-          <a class="activity200-modal-button bigger" @mouseover="buttonSound(2)"><img src="images/Lab2/lab02-btn-explorarotro.svg" alt=""></a>
+          <a class="activity200-modal-button" @click="cleanActivity(false, 1)"><img @mouseover="buttonSound(1)"  src="images/Lab2/lab02-btn-repetir.svg" alt=""></a>
+          <a class="activity200-modal-button bigger"><img ref="button2" src="images/Lab2/lab02-btn-explorarotro.svg" alt=""></a>
         </div>
       </div>
     </div>
@@ -139,7 +139,9 @@
         playPromise: null,
       },
       mounted() {
+        var myEfficientFn = this.debounce(() => { this.buttonSound(2); }, 500);
 
+        this.$refs.button2.addEventListener('mouseover', myEfficientFn);
       },
       watch: {
         selectedCycle: {
@@ -219,7 +221,21 @@
           this.audioButtons && this.audioButtons.pause();
           this.audioButtons = new Audio(`audios/lab02_audio-boton0${audio}.mp3`);
           this.audioButtons.play();
-        }
+        },
+        debounce(func, wait, immediate) {
+          var timeout;
+          return function() {
+            var context = this, args = arguments;
+            var later = function() {
+              timeout = null;
+              if (!immediate) func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+          };
+        },
       },
     });
   </script>

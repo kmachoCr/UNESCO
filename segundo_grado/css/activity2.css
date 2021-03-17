@@ -223,7 +223,7 @@ body {
   justify-content: space-evenly;
 }
 
-.activity200-modal .activity200-modal-title {
+.activity200-feedback-title {
   color: #009245;
   font-size: 50px;
   font-weight: 700;
@@ -245,6 +245,14 @@ body {
 
 .activity200-feedback-img {
   height: 450px;
+}
+.activity200-feedback-message { 
+  font-weight: 700;
+  font-size: 24px;
+  margin: 0 auto 30px;
+  max-width: 800px;
+  color: #4D4D4D;
+  text-align: center;
 }
 
 .activity200-feedback .activity200-modal-button img {
