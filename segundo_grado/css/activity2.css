@@ -238,12 +238,19 @@ body {
   margin: 0 auto 35px;
 }
 
-.activity200-modal .activity200-modal-button img {
-  height: 73px;
-  cursor: pointer;
+.activity200-feedback {
+  display: flex;
+  justify-content: center;
 }
 
-.activity200-modal .activity200-modal-button.bigger img {
-  height: 90px;
+.activity200-feedback-img {
+  height: 450px;
 }
+
+.activity200-feedback .activity200-modal-button img {
+  height: 73px;
+  cursor: pointer;
+  margin: 0 15px;
+}
+
 

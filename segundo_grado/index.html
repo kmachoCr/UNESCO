@@ -39,7 +39,7 @@
     </div>
   </header>
   <div id="app-2" class="activity200">
-    <a class="activity200-cycle-go-back" v-show="hideMenu" @click="cleanActivity(true)"><img src="images/Lab2/lab02-btn-regresar.svg" alt=""></a>
+    <a class="activity200-cycle-go-back" v-show="hideMenu" @mouseover="buttonSound(3)" @click="cleanActivity(true, 3)"><img src="images/Lab2/lab02-btn-regresar.svg" alt=""></a>
     <div class="container" v-show="!hideMenu">
       <div class="row">
         <div class="col">
@@ -61,7 +61,7 @@
         </div>
       </div>
     </div>
-    <div class="container-fluid" v-show="hideMenu">
+    <div class="container-fluid" v-show="hideMenu && !showFeedback">
       <div class="row">
         <div class="col">
           <div class="text-center">
@@ -100,24 +100,22 @@
           </div>
         </div>
       </div>
-      <div class="modal fade bd-example-modal-lg activity200-modal" tabindex="-1" role="dialog" id="activity200-modal" data-backdrop="static" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-centered">
-          <div class="modal-content">
+    </div>
+    <div class="container" v-show="showFeedback">
+      <div class="row">
+        <div class="col">
+          <div class="text-center">
 
-            <div class="modal-body">
-              <div class="row">
-                <div class="col-12">
-                  <p class="activity200-modal-title">¡Muy bien!</p>
-                  <p class="activity200-modal-message">Has completado el ciclo de vida de {{selectedCycle.title ? selectedCycle.title.toLowerCase() : ''}}.</p>
-                </div>
-                <div class="col activity200-modal-button-container">
-                  <a class="activity200-modal-button" @click="cleanActivity()"><img src="images/Lab2/lab02-btn-repetir.svg" alt=""></a>
-
-                  <a class="activity200-modal-button bigger" @click="cleanActivity(true)"><img src="images/Lab2/lab02-btn-explorarotro.svg" alt=""></a>
-                </div>
-              </div>
-            </div>
+            <h2 class="activity200-intro">Has completado el ciclo de vida de {{selectedCycle.title ? selectedCycle.title.toLowerCase() : ''}}.</p>
+              <img class="activity200-feedback-img" :src="`images/Lab2/lab02-card-${selectedCycle.code}.svg`" alt="">
           </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col activity200-feedback">
+          
+          <a class="activity200-modal-button" @mouseover="buttonSound(1)" @click="cleanActivity(false, 1)"><img src="images/Lab2/lab02-btn-repetir.svg" alt=""></a>
+          <a class="activity200-modal-button bigger" @mouseover="buttonSound(2)"><img src="images/Lab2/lab02-btn-explorarotro.svg" alt=""></a>
         </div>
       </div>
     </div>
@@ -126,6 +124,7 @@
 
   <script src="js/conf/200_ACT/activity200.js"></script>
   <script>
+    let audioCycle = null;
     var app2 = new Vue({
       el: '#app-2',
       data: {
@@ -133,6 +132,11 @@
         selectedCycle: {},
         orderedCycle: {},
         hideMenu: false,
+        showFeedback: false,
+        audio: null,  
+        audioFeedback: null,
+        audioButtons: null,
+        playPromise: null,
       },
       mounted() {
 
@@ -156,23 +160,31 @@
         },
         onDrop(evt, cycleCode, dropCode) {
           const dragCode = evt.dataTransfer.getData('code');
-          let audio = null;
-          
+          let audioAnswer = null;
           if (dropCode === dragCode) {
             const index = this.selectedCycle.cycle.findIndex(element => `${cycleCode}-${element.step}` === dropCode);
             this.selectedCycle.cycle[index].placed = true;
             this.$forceUpdate();
-            audio = new Audio("audios/correct-answer.mp3");
+            audioAnswer = new Audio("audios/correct-answer.mp3");
           }else {
-            audio = new Audio("audios/wrong-answer.mp3");
+            audioAnswer = new Audio("audios/wrong-answer.mp3");
           }
-          audio.play();
+          audioAnswer.play();
+
           if (this.selectedCycle.cycle.every(elem => elem.placed)) {
-            $('#activity200-modal').modal('show');
+            this.audio.pause();
+            this.showFeedback = true;
+            this.audioFeedback = new Audio(`audios/lab02_audio-retro-${this.selectedCycle.code}.mp3`);
+            this.audioFeedback.play();
           }
         },
         selectCycle(index) {
           this.selectedCycle = this.cycles[index];
+          this.audio = new Audio(`audios/lab02_audio-pregunta-${this.selectedCycle.code}.mp3`);
+          setTimeout(() => {
+            this.playPromise = this.audio.play();
+          }, 500);
+          
 
           this.orderedCycle = {...this.selectedCycle};
           this.orderedCycle.cycle = [...this.selectedCycle.cycle].sort(function (a, b) {
@@ -189,17 +201,24 @@
           this.$forceUpdate();
 
         },
-        cleanActivity(goBack) {
-
+        cleanActivity(goBack, audio) {
+          this.audio && this.audio.pause();
+          this.audioFeedback && this.audioFeedback.pause();
+          this.showFeedback = false;
           $('#activity200-modal').modal('hide');
           this.selectedCycle.cycle.forEach((element, index) => {
             element.placed = false;
-
           });
+          
           if (goBack) {
             this.selectedCycle = {};
           }
           this.$forceUpdate();
+        },
+        buttonSound(audio) {
+          this.audioButtons && this.audioButtons.pause();
+          this.audioButtons = new Audio(`audios/lab02_audio-boton0${audio}.mp3`);
+          this.audioButtons.play();
         }
       },
     });

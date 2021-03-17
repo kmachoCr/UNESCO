@@ -4,6 +4,7 @@ const activity2 = {
       name: 'Gallina',
       title: 'la gallina',
       image: 'images/Lab2/lab02-card-gallina.svg',
+      imageFeedback: 'images/Lab2/lab02-card-gallina.svg',
       code: 'gallina',
       cycle: [
         {
@@ -36,6 +37,7 @@ const activity2 = {
       name: 'Mariposa',
       title: 'la mariposa',
       image: 'images/Lab2/lab02-card-mariposa.svg',
+      imageFeedback: 'images/Lab2/lab02-card-mariposa.svg',
       code: 'mariposa',
       cycle: [
                 {
@@ -68,7 +70,8 @@ const activity2 = {
       name: 'Ratón',
       title: 'un ratón',
       image: 'images/Lab2/lab02-card-raton.svg',
-      code: 'mariposa',
+      imageFeedback: 'images/Lab2/lab02-card-raton.svg',
+      code: 'raton',
       cycle: [
         {
           step: 3,
@@ -100,7 +103,8 @@ const activity2 = {
       name: 'Arbol',
       title: 'un árbol de naranja',
       image: 'images/Lab2/lab02-card-arbol.svg',
-      code: 'mariposa',
+      imageFeedback: 'images/Lab2/lab02-card-arbol.svg',
+      code: 'arbol',
       cycle: [
         {
           step: 2,
