@@ -1,7 +1,9 @@
 body {
   font-family: 'Quicksand', sans-serif;
 }
-
+[draggable=true] {
+  -khtml-user-drag: element;
+}
 .header-mep {
   background-color: #00A99D;
   display: flex;
@@ -245,6 +247,7 @@ body {
 
 .activity200-feedback-img {
   height: 450px;
+  margin-bottom: 10px;
 }
 .activity200-feedback-message { 
   font-weight: 700;
@@ -253,7 +256,20 @@ body {
   max-width: 800px;
   color: #4D4D4D;
   text-align: center;
+  position: relative;
 }
+.activity200-feedback-message::before { 
+  content: url(../images/Lab2/lab02-btn-audio.svg);
+  width: 55px;
+  height: 55px;
+  background-size: contain;
+  top: 45px;
+  left: -55px;
+  position: relative;
+  object-fit: contain;
+  display: block;
+}
+
 
 .activity200-feedback .activity200-modal-button img {
   height: 73px;

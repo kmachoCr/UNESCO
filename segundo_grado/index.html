@@ -75,7 +75,7 @@
         <div class="activity200-cycle">
           <div class="activity200-cycle--item" :class="`activity200-cycle--item-${selectedCycle.code}-${cycle.step}`"
             v-for="(cycle, index) in selectedCycle.cycle" :key="index">
-            <div class="activity200-cycle--item-container" draggable
+            <div class="activity200-cycle--item-container" draggable="true"
               @dragstart='startDrag($event, `${selectedCycle.code}-${cycle.step}`, index)'>
               <img :src="cycle.image" v-if="!cycle.placed" alt="">
             </div>
@@ -112,10 +112,10 @@
         </div>
       </div>
       <div class="row">
-        <div class="col activity200-feedback">
+        <div class="col activity200-feedback" v-show="!isFeedbackPlaying">
           
           <a class="activity200-modal-button" @click="cleanActivity(false, 1)"><img @mouseover="buttonSound(1)"  src="images/Lab2/lab02-btn-repetir.svg" alt=""></a>
-          <a class="activity200-modal-button bigger"><img ref="button2" src="images/Lab2/lab02-btn-explorarotro.svg" alt=""></a>
+          <a class="activity200-modal-button bigger" @click="cleanActivity(true, 2)"><img ref="button2" src="images/Lab2/lab02-btn-explorarotro.svg" alt=""></a>
         </div>
       </div>
     </div>
@@ -137,11 +137,15 @@
         audioFeedback: null,
         audioButtons: null,
         playPromise: null,
+        isPlaying: false,
+        isFeedbackPlaying: false,
+        audioInitial: null,
       },
       mounted() {
         var myEfficientFn = this.debounce(() => { this.buttonSound(2); }, 500);
-
         this.$refs.button2.addEventListener('mouseover', myEfficientFn);
+        this.audioInitial = new Audio("audios/lab02_audio-presentacion.mp3");
+        this.audioInitial.play();
       },
       watch: {
         selectedCycle: {
@@ -156,11 +160,12 @@
       },
       methods: {
         startDrag: (evt, code) => {
-          evt.dataTransfer.dropEffect = 'move';
+          evt.dataTransfer.dropEffect = 'copy';
           evt.dataTransfer.effectAllowed = 'move';
           evt.dataTransfer.setData('code', code);
         },
         onDrop(evt, cycleCode, dropCode) {
+          evt.preventDefault();
           const dragCode = evt.dataTransfer.getData('code');
           let audioAnswer = null;
           if (dropCode === dragCode) {
@@ -178,9 +183,14 @@
             this.showFeedback = true;
             this.audioFeedback = new Audio(`audios/lab02_audio-retro-${this.selectedCycle.code}.mp3`);
             this.audioFeedback.play();
+            this.isFeedbackPlaying = true;
+            this.audioFeedback.addEventListener("ended", () => {
+            this.isFeedbackPlaying = false;
+          });
           }
         },
         selectCycle(index) {
+          this.audioInitial && this.audioInitial.pause();
           this.selectedCycle = this.cycles[index];
           this.audio = new Audio(`audios/lab02_audio-pregunta-${this.selectedCycle.code}.mp3`);
           setTimeout(() => {
@@ -206,6 +216,7 @@
         cleanActivity(goBack, audio) {
           this.audio && this.audio.pause();
           this.audioFeedback && this.audioFeedback.pause();
+          this.audioButtons && this.audioButtons.pause();
           this.showFeedback = false;
           $('#activity200-modal').modal('hide');
           this.selectedCycle.cycle.forEach((element, index) => {
@@ -218,9 +229,19 @@
           this.$forceUpdate();
         },
         buttonSound(audio) {
-          this.audioButtons && this.audioButtons.pause();
-          this.audioButtons = new Audio(`audios/lab02_audio-boton0${audio}.mp3`);
-          this.audioButtons.play();
+          if(!this.isPlaying){
+            this.audioButtons && this.audioButtons.pause();
+            this.audioButtons = new Audio(`audios/lab02_audio-boton0${audio}.mp3`);
+            this.audioButtons.play();
+            this.isPlaying = true;
+          }
+          
+
+          this.audioButtons.removeEventListener("ended", () => {});
+          this.audioButtons.addEventListener("ended", () => {
+            this.isPlaying = false;
+          });
+
         },
         debounce(func, wait, immediate) {
           var timeout;
