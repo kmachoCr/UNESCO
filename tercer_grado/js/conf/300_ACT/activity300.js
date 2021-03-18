@@ -45,7 +45,7 @@ const activity3 = {
     {
       name: 'Intestino grueso',
       code: 'int-grueso',
-      description: 'Es un tubo grueso y corto que rodea al intestino delgado. Se encarga de expulsar los residuos al exterior del cuerpo. Además,  en el instestino grueso actúan las bacterias que permiten la absorción vitaminas como la B12 y K.',
+      description: 'Es un tubo grueso y corto que rodea al intestino delgado. Se encarga de expulsar los residuos al exterior del cuerpo. Además,  en el instestino grueso actúan las bacterias que permiten la absorción de vitaminas como la B12 y K.',
       selected: false
     },
   ],

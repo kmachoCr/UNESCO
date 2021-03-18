@@ -199,7 +199,7 @@ const activity101 = {
           name: 'Pulpo',
           image: 'images/lab1/lab01-icon-pulpo.svg',
           isCorrect: false,
-          feedback: '¡No! Los pulpos son seres marinos que toman el oxígeno del agua.',
+          feedback: '¡Los pulpos son seres marinos que toman el oxígeno del agua.',
           audio: 'audios/06-feedback-pulpo.mp3',
         },
         {

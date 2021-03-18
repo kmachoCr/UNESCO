@@ -46,6 +46,7 @@
           <p class="activity300-instructions intro">La digestión es el proceso de nuestro cuerpo que se encarga de transformar los alimentos que consumimos en nutrientes y energía, para ser absorbidos por el torrente sanguíneo y transportados a todas las células del organismo.</p>
             <div class="activity300-menu--item organos" @click="goTo(2)"><a href="#"><img src="images/lab3/lab03-btn2.svg" alt="botón Órganos del sistema digestivo"></a></div>
             <div class="activity300-menu--item proceso" @click="goTo(3)"><a href="#"><img src="images/lab3/lab03-btn3.svg" alt="botón El proceso digestivo"></a></div>
+            <div class="activity300-menu--item acomer" @click="goTo(5)"><a href="#"><img src="images/lab3/lab03-btn-acomer.svg" alt="botón ¡A comer!"></a></div>
             <div class="activity300-menu--item cuidados" @click="goTo(4)"><a href="#"><img src="images/lab3/lab03-btn4.svg" alt="botón Cuidados del sistema digestivo"></a></div>
         </div>
         <div class="col-sm-5 activity300-menu">
@@ -194,6 +195,16 @@
         </div>
       </div>        
     </div>
+
+<!--a comer-->
+    <div id="acomer" class="container" v-show="page === 5">
+      <a class="activity300-cycle-go-back" v-show="page !== 0" @click="goBack()"><img src="images/lab3/lab03-btn-regresar.svg" alt="botón de Regresar al menú"></a>
+      <div class="row">
+        ...
+        <img class="d-block w-100" src="images/lab3/cuidados/lab03-sli-ficha_3.png" alt="Establecer un horario de comidas.">
+      </div> 
+    </div>
+
   </div>
   <footer class="footer-mep d-flex">
       <div class="footer-icon"><img src="images/logo-eds.svg" alt="Logo EDS"></div>
