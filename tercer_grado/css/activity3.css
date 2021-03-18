@@ -3,6 +3,10 @@ body {
   counter-reset: section;
 }
 
+[draggable=true] {
+  -khtml-user-drag: element;
+}
+
 .header-mep {
   background-color: #F97046;
   display: flex;
@@ -13,7 +17,7 @@ body {
 
 .footer-mep {
   background-color: #FFEECF;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 10px 35px;
 }
 
@@ -39,15 +43,12 @@ body {
 }
 
 .footer-icon {
-  height: 90px;
-  width: 90px;
   display: flex;
   margin-right: 10px;
 }
 
 .footer-icon img {
-  width: 90px;
-  height: auto;
+  height: 80px;
   display: flex;
 }
 
@@ -295,7 +296,7 @@ h2.activity300title{
 .activity300 .activity300-cycle--item-container img,
 .activity300 .activity300-dropzone--item-container img {
   height: 80px;
-  margin: auto;
+  margin: 0 auto 0 30px;
   display: block; 
 }
 

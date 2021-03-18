@@ -195,8 +195,8 @@
       </div>        
     </div>
   </div>
-  <footer class="footer-mep">
-      <div class="footer-icon d-flex"><img src="images/logo-eds.svg" alt="Logo EDS"></div>
+  <footer class="footer-mep d-flex">
+      <div class="footer-icon"><img src="images/logo-eds.svg" alt="Logo EDS"></div>
       <div class="footer-icon"><a href="https://es.unesco.org/fieldoffice/sanjose" target="_blank"><img src="images/logo-unesco.svg" alt="Logo UNESCO"></a></div>
   </footer>
 
@@ -247,6 +247,7 @@
           evt.dataTransfer.setData('code', code);
         },
         onDrop(evt, index, dropCode) {
+          evt.preventDefault();
           const dragCode = evt.dataTransfer.getData('code');
           let audio = null;
           
