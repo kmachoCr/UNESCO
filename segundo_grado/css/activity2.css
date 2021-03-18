@@ -1,9 +1,11 @@
 body {
   font-family: 'Quicksand', sans-serif;
 }
+
 [draggable=true] {
   -khtml-user-drag: element;
 }
+
 .header-mep {
   background-color: #00A99D;
   display: flex;

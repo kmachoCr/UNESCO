@@ -2,6 +2,10 @@ body {
   font-family: 'Quicksand', sans-serif;
 }
 
+[draggable=true] {
+  -khtml-user-drag: element;
+}
+
 .line-height-normal{
   line-height: normal;
 }

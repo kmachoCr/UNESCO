@@ -172,6 +172,7 @@
           evt.dataTransfer.setData('option', JSON.stringify({ slide: index, option: indexOptions }));
         },
         onDrop(evt, list) {
+          evt.preventDefault();
           const option = JSON.parse(evt.dataTransfer.getData('option'));
           this.validateAnswer(option.slide, option.option);
         },
