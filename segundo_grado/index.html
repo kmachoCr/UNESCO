@@ -38,7 +38,21 @@
     <div class="header-title-image d-flex"><img src="images/Lab2/lab02-title.svg" style="width: 400px;" alt="Explorando el sistema digestivo"></div>
   </header>
   <div id="app-2" class="activity200">
-    <a class="activity200-cycle-go-back" v-show="hideMenu" @mouseover="buttonSound(3)" @click="cleanActivity(true, 3)"><img src="images/Lab2/lab02-btn-regresar.svg" alt=""></a>
+    <div class="modal fade bd-example-modal-lg activity200-modal" tabindex="-1" role="dialog" id="activity200-modal" data-backdrop="static" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-centered">
+        <div class="modal-content">
+
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-12">
+                <img @click="initialSound()" class="activity200-modal-start" src="images/Lab2/lab02-btn-iniciar.svg" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="activity200-cycle-go-back" v-show="hideMenu" @mouseover="buttonSound('boton03')" @click="cleanActivity(true, 3)"><img src="images/Lab2/lab02-btn-regresar.svg" alt=""></a>
     <div class="container" v-show="!hideMenu">
       <div class="row">
         <div class="col">
@@ -53,7 +67,7 @@
         <div class="col activity200-menu">
           <div class="activity200-menu--item" v-for="(cycle, index) in cycles" :key="index">
             <div class="activity200-menu--item-container" @click="selectCycle(index)">
-              <img :src="cycle.image" alt="">
+              <img :src="cycle.image"  @mouseover="buttonSound(cycle.code)" alt="">
             </div>
 
           </div>
@@ -113,7 +127,7 @@
       <div class="row">
         <div class="col activity200-feedback" v-show="!isFeedbackPlaying">
           
-          <a class="activity200-modal-button" @click="cleanActivity(false, 1)"><img @mouseover="buttonSound(1)"  src="images/Lab2/lab02-btn-repetir.svg" alt=""></a>
+          <a class="activity200-modal-button" @click="cleanActivity(false, 1)"><img @mouseover="buttonSound('boton01')"  src="images/Lab2/lab02-btn-repetir.svg" alt=""></a>
           <a class="activity200-modal-button bigger" @click="cleanActivity(true, 2)"><img ref="button2" src="images/Lab2/lab02-btn-explorarotro.svg" alt=""></a>
         </div>
       </div>
@@ -144,10 +158,10 @@
         audioInitial: null,
       },
       mounted() {
-        var myEfficientFn = this.debounce(() => { this.buttonSound(2); }, 500);
+        var myEfficientFn = this.debounce(() => { this.buttonSound('boton02'); }, 500);
         this.$refs.button2.addEventListener('mouseover', myEfficientFn);
-        this.audioInitial = new Audio("audios/lab02_audio-presentacion.mp3");
-        this.audioInitial.play();
+        $('#activity200-modal').modal('show');
+        
       },
       watch: {
         selectedCycle: {
@@ -161,6 +175,13 @@
         }
       },
       methods: {
+        initialSound(){
+          this.audioInitial = new Audio("audios/lab02_audio-presentacion.mp3");
+          this.audioInitial.play();
+          this.audioInitial.addEventListener("ended", () => {
+            $('#activity200-modal').modal('hide');
+          });
+        },
         startDrag: (evt, code) => {
           evt.dataTransfer.dropEffect = 'copy';
           evt.dataTransfer.effectAllowed = 'move';
@@ -220,7 +241,6 @@
           this.audioFeedback && this.audioFeedback.pause();
           this.audioButtons && this.audioButtons.pause();
           this.showFeedback = false;
-          $('#activity200-modal').modal('hide');
           this.selectedCycle.cycle.forEach((element, index) => {
             element.placed = false;
           });
@@ -233,7 +253,7 @@
         buttonSound(audio) {
           if(!this.isPlaying){
             this.audioButtons && this.audioButtons.pause();
-            this.audioButtons = new Audio(`audios/lab02_audio-boton0${audio}.mp3`);
+            this.audioButtons = new Audio(`audios/lab02_audio-${audio}.mp3`);
             this.audioButtons.play();
             this.isPlaying = true;
           }
