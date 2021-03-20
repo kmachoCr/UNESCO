@@ -58,7 +58,9 @@
         <div class="col">
           <div class="text-center">
 
-            <h2 class="activity200-intro">El ciclo de la vida es el proceso natural por el que atraviesan todos los seres vivos desde que nacen hasta que mueren. Está divido en cuatro etapas principales: nacimiento, crecimiento y desarrollo, reproducción y muerte.</h4>
+            <h2 class="activity200-intro">El ciclo de la vida es el proceso natural por el que atraviesan todos los seres vivos desde que nacen hasta que mueren. <strong>Está divido en cuatro etapas principales: nacimiento, crecimiento y desarrollo, reproducción y muerte.<br/><br/>
+            ¡Exploremos los ciclos de vida de algunos seres vivos! </h2>
+
             <p class="activity200-instructions">Seleccioná un ser para conocer su ciclo de vida:</p>
           </div>
         </div>
@@ -118,7 +120,7 @@
       <div class="row">
         <div class="col">
           <div class="text-center">
-              <h2 class="activity200-feedback-title">Muy bien!</h2>
+              <h2 class="activity200-feedback-title">¡Muy bien!</h2>
               <p class="activity200-feedback-message">{{selectedCycle.feedback}}</p>
               <img class="activity200-feedback-img" :src="`images/Lab2/lab02-ciclo-${selectedCycle.code}.png`" alt="imagen sobre ciclo de vida de seres vivos">
           </div>
@@ -178,9 +180,7 @@
         initialSound(){
           this.audioInitial = new Audio("audios/lab02_audio-presentacion.mp3");
           this.audioInitial.play();
-          this.audioInitial.addEventListener("ended", () => {
-            $('#activity200-modal').modal('hide');
-          });
+          $('#activity200-modal').modal('hide');
         },
         startDrag: (evt, code) => {
           evt.dataTransfer.dropEffect = 'copy';
