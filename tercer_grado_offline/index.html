@@ -10,7 +10,7 @@
   <meta property="og:title" content="Explorando el sistema digestivo" />
   <meta property="og:description" content="¿Qué pasa cuando los alimentos ingresan a nuestro organismo?" />
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/activity3.css">
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -23,11 +23,10 @@
 
 <body>
   <header class="header-mep">
-    <div class="header-title-image d-flex"><img src="images/lab3/lab03-title.svg" style="width: 400px;" alt="Explorando el sistema digestivo"></div>
     <div class="mep-unesco-logo">
       <div class="header-mep-icon"><a href="https://www.mep.go.cr/" target="_blank"><img src="images/logo-mep.svg" alt="Logo MEP"></a></div>
-      <div class="header-mep-icon"><img src="images/logo-politica-eds.png" alt="Logo EDS"></div>
     </div>
+    <div class="header-title-image d-flex"><img src="images/lab3/lab03-title.svg" style="width: 400px;" alt="Explorando el sistema digestivo"></div>
   </header>
   <div id="app-2" class="activity300">
     
@@ -38,6 +37,7 @@
           <p class="activity300-instructions intro">La digestión es el proceso de nuestro cuerpo que se encarga de transformar los alimentos que consumimos en nutrientes y energía, para ser absorbidos por el torrente sanguíneo y transportados a todas las células del organismo.</p>
             <div class="activity300-menu--item organos" @click="goTo(2)"><a href="#"><img src="images/lab3/lab03-btn2.svg" alt="botón Órganos del sistema digestivo"></a></div>
             <div class="activity300-menu--item proceso" @click="goTo(3)"><a href="#"><img src="images/lab3/lab03-btn3.svg" alt="botón El proceso digestivo"></a></div>
+            <div class="activity300-menu--item acomer" @click="goTo(5)"><a href="#"><img src="images/lab3/lab03-btn-acomer.svg" alt="botón ¡A comer!"></a></div>
             <div class="activity300-menu--item cuidados" @click="goTo(4)"><a href="#"><img src="images/lab3/lab03-btn4.svg" alt="botón Cuidados del sistema digestivo"></a></div>
         </div>
         <div class="col-sm-5 activity300-menu">
@@ -186,7 +186,20 @@
         </div>
       </div>        
     </div>
+
+<!--a comer-->
+    <div id="acomer" class="container" v-show="page === 5">
+      <a class="activity300-cycle-go-back" v-show="page !== 0" @click="goBack()"><img src="images/lab3/lab03-btn-regresar.svg" alt="botón de Regresar al menú"></a>
+      <div class="row acomer-container">
+        <iframe src="a-comer/index.html" style="border:0px #ffffff none;" name="acomer" scrolling="no" frameborder="0" marginheight="0px" marginwidth="0px" width="100%" height="480px" allowfullscreen=""></iframe>
+      </div> 
+    </div>
+
   </div>
+  <footer class="footer-mep d-flex">
+      <div class="footer-icon"><img src="images/logo-eds.svg" alt="Logo EDS"></div>
+      <div class="footer-icon"><a href="https://es.unesco.org/fieldoffice/sanjose" target="_blank"><img src="images/logo-unesco.svg" alt="Logo UNESCO"></a></div>
+  </footer>
 
 
   <script src="js/conf/300_ACT/activity300.js"></script>
@@ -235,6 +248,7 @@
           evt.dataTransfer.setData('code', code);
         },
         onDrop(evt, index, dropCode) {
+          evt.preventDefault();
           const dragCode = evt.dataTransfer.getData('code');
           let audio = null;
           

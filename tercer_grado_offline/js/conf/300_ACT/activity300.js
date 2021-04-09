@@ -15,7 +15,7 @@ const activity3 = {
     {
       name: 'Esófago',
       code: 'esofago',
-      description: 'Canal que permite la comunicación entre la boca y el esófago. También forma parte del sistema respiratorio.',
+      description: 'Es el conducto que permite la comunicación entre la faringe y el estómago.',
       selected: false
     },
     {
@@ -45,7 +45,7 @@ const activity3 = {
     {
       name: 'Intestino grueso',
       code: 'int-grueso',
-      description: 'Es un tubo grueso y corto que rodea al intestino delgado. Se encarga de expulsar los residuos al exterior del cuerpo.',
+      description: 'Es un tubo grueso y corto que rodea al intestino delgado. Se encarga de expulsar los residuos al exterior del cuerpo. Además,  en el instestino grueso actúan las bacterias que permiten la absorción de vitaminas como la B12 y K.',
       selected: false
     },
   ],

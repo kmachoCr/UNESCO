@@ -48,8 +48,9 @@ body {
 }
 
 .footer-icon img {
-  height: 80px;
+  height: 100px;
   display: flex;
+  margin-left: 15px;
 }
 
 .header-mep-icon img.mep {

@@ -23,20 +23,35 @@
 
 <body>
   <header class="header-mep">
-    <div class="header-title-image d-flex"><img src="images/Lab2/lab02-title.svg" style="width: 400px;" alt="¡Exploremos los ciclos de vida de algunos seres vivos"></div>
     <div class="mep-unesco-logo">
       <div class="header-mep-icon"><a href="https://www.mep.go.cr/" target="_blank"><img src="images/logo-mep.svg" alt="Logo MEP"></a></div>
-      <div class="header-mep-icon"><img src="images/logo-politica-eds.png" alt="Logo EDS"></div>
     </div>
+    <div class="header-title-image d-flex"><img src="images/Lab2/lab02-title.svg" style="width: 400px;" alt="Explorando el sistema digestivo"></div>
   </header>
   <div id="app-2" class="activity200">
-    <a class="activity200-cycle-go-back" v-show="hideMenu" @click="cleanActivity(true)"><img src="images/Lab2/lab02-btn-regresar.svg" alt=""></a>
+    <div class="modal fade bd-example-modal-lg activity200-modal" tabindex="-1" role="dialog" id="activity200-modal" data-backdrop="static" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-centered">
+        <div class="modal-content">
+
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-12">
+                <img @click="initialSound()" class="activity200-modal-start" src="images/Lab2/lab02-btn-iniciar.svg" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="activity200-cycle-go-back" v-show="hideMenu" @mouseover="buttonSound('boton03')" @click="cleanActivity(true, 3)"><img src="images/Lab2/lab02-btn-regresar.svg" alt=""></a>
     <div class="container" v-show="!hideMenu">
       <div class="row">
         <div class="col">
           <div class="text-center">
 
-            <h2 class="activity200-intro">El ciclo de la vida es el proceso natural por el que atraviesan todos los seres vivos desde que nacen hasta que mueren. Está divido en cuatro etapas principales: nacimiento, crecimiento y desarrollo, reproducción y muerte.</h4>
+            <h2 class="activity200-intro">El ciclo de la vida es el proceso natural por el que atraviesan todos los seres vivos desde que nacen hasta que mueren. <strong>Está divido en cuatro etapas principales: nacimiento, crecimiento y desarrollo, reproducción y muerte.<br/><br/>
+            ¡Exploremos los ciclos de vida de algunos seres vivos! </h2>
+
             <p class="activity200-instructions">Seleccioná un ser para conocer su ciclo de vida:</p>
           </div>
         </div>
@@ -45,20 +60,20 @@
         <div class="col activity200-menu">
           <div class="activity200-menu--item" v-for="(cycle, index) in cycles" :key="index">
             <div class="activity200-menu--item-container" @click="selectCycle(index)">
-              <img :src="cycle.image" alt="">
+              <img :src="cycle.image"  @mouseover="buttonSound(cycle.code)" alt="">
             </div>
 
           </div>
         </div>
       </div>
     </div>
-    <div class="container-fluid" v-show="hideMenu">
+    <div class="container-fluid" v-show="hideMenu && !showFeedback">
       <div class="row">
         <div class="col">
           <div class="text-center">
             <h2 class="activity200-cycle-title">¿Cuál es el ciclo de vida de <span class="h2-especie">{{selectedCycle.title}}</span>?</h2>
             <h4 class="activity200-cycle-subtitle d-none">¿Cuál es el ciclo de vida de {{selectedCycle.title ? selectedCycle.title.toLowerCase() : ''}}? </h4>
-            <p class="activity200-cycle-instruction">Arrastrá las imágenes a las casillas según el orden correcto.</p>
+            <p class="activity200-cycle-instruction">Arrastrá las imágenes a los recuadros, según la etapa del ciclo de vida que representa cada una.</p>
           </div>
         </div>
       </div>
@@ -66,7 +81,7 @@
         <div class="activity200-cycle">
           <div class="activity200-cycle--item" :class="`activity200-cycle--item-${selectedCycle.code}-${cycle.step}`"
             v-for="(cycle, index) in selectedCycle.cycle" :key="index">
-            <div class="activity200-cycle--item-container" draggable
+            <div class="activity200-cycle--item-container" draggable="true"
               @dragstart='startDrag($event, `${selectedCycle.code}-${cycle.step}`, index)'>
               <img :src="cycle.image" v-if="!cycle.placed" alt="">
             </div>
@@ -91,32 +106,34 @@
           </div>
         </div>
       </div>
-      <div class="modal fade bd-example-modal-lg activity200-modal" tabindex="-1" role="dialog" id="activity200-modal" data-backdrop="static" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-centered">
-          <div class="modal-content">
-
-            <div class="modal-body">
-              <div class="row">
-                <div class="col-12">
-                  <p class="activity200-modal-title">¡Muy bien!</p>
-                  <p class="activity200-modal-message">Has completado el ciclo de vida de {{selectedCycle.title ? selectedCycle.title.toLowerCase() : ''}}.</p>
-                </div>
-                <div class="col activity200-modal-button-container">
-                  <a class="activity200-modal-button" @click="cleanActivity()"><img src="images/Lab2/lab02-btn-repetir.svg" alt=""></a>
-
-                  <a class="activity200-modal-button bigger" @click="cleanActivity(true)"><img src="images/Lab2/lab02-btn-explorarotro.svg" alt=""></a>
-                </div>
-              </div>
-            </div>
+    </div>
+    <div class="container" v-show="showFeedback">
+      <div class="row">
+        <div class="col">
+          <div class="text-center">
+              <h2 class="activity200-feedback-title">¡Muy bien!</h2>
+              <p class="activity200-feedback-message">{{selectedCycle.feedback}}</p>
+              <img class="activity200-feedback-img" :src="`images/Lab2/lab02-ciclo-${selectedCycle.code}.png`" alt="imagen sobre ciclo de vida de seres vivos">
           </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col activity200-feedback" v-show="!isFeedbackPlaying">
+          
+          <a class="activity200-modal-button" @click="cleanActivity(false, 1)"><img @mouseover="buttonSound('boton01')"  src="images/Lab2/lab02-btn-repetir.svg" alt=""></a>
+          <a class="activity200-modal-button bigger" @click="cleanActivity(true, 2)"><img ref="button2" src="images/Lab2/lab02-btn-explorarotro.svg" alt=""></a>
         </div>
       </div>
     </div>
   </div>
-
+  <footer class="footer-mep d-flex">
+      <div class="footer-icon"><img src="images/logo-eds.svg" alt="Logo EDS"></div>
+      <div class="footer-icon"><a href="https://es.unesco.org/fieldoffice/sanjose" target="_blank"><img src="images/logo-unesco.svg" alt="Logo UNESCO"></a></div>
+  </footer>
 
   <script src="js/conf/200_ACT/activity200.js"></script>
   <script>
+    let audioCycle = null;
     var app2 = new Vue({
       el: '#app-2',
       data: {
@@ -124,9 +141,20 @@
         selectedCycle: {},
         orderedCycle: {},
         hideMenu: false,
+        showFeedback: false,
+        audio: null,  
+        audioFeedback: null,
+        audioButtons: null,
+        playPromise: null,
+        isPlaying: false,
+        isFeedbackPlaying: false,
+        audioInitial: null,
       },
       mounted() {
-
+        var myEfficientFn = this.debounce(() => { this.buttonSound('boton02'); }, 500);
+        this.$refs.button2.addEventListener('mouseover', myEfficientFn);
+        $('#activity200-modal').modal('show');
+        
       },
       watch: {
         selectedCycle: {
@@ -140,30 +168,49 @@
         }
       },
       methods: {
+        initialSound(){
+          this.audioInitial = new Audio("audios/lab02_audio-presentacion.mp3");
+          this.audioInitial.play();
+          $('#activity200-modal').modal('hide');
+        },
         startDrag: (evt, code) => {
-          evt.dataTransfer.dropEffect = 'move';
+          evt.dataTransfer.dropEffect = 'copy';
           evt.dataTransfer.effectAllowed = 'move';
           evt.dataTransfer.setData('code', code);
         },
         onDrop(evt, cycleCode, dropCode) {
+          evt.preventDefault();
           const dragCode = evt.dataTransfer.getData('code');
-          let audio = null;
-          
+          let audioAnswer = null;
           if (dropCode === dragCode) {
             const index = this.selectedCycle.cycle.findIndex(element => `${cycleCode}-${element.step}` === dropCode);
             this.selectedCycle.cycle[index].placed = true;
             this.$forceUpdate();
-            audio = new Audio("audios/correct-answer.mp3");
+            audioAnswer = new Audio("audios/correct-answer.mp3");
           }else {
-            audio = new Audio("audios/wrong-answer.mp3");
+            audioAnswer = new Audio("audios/wrong-answer.mp3");
           }
-          audio.play();
+          audioAnswer.play();
+
           if (this.selectedCycle.cycle.every(elem => elem.placed)) {
-            $('#activity200-modal').modal('show');
+            this.audio.pause();
+            this.showFeedback = true;
+            this.audioFeedback = new Audio(`audios/lab02_audio-retro-${this.selectedCycle.code}.mp3`);
+            this.audioFeedback.play();
+            this.isFeedbackPlaying = true;
+            this.audioFeedback.addEventListener("ended", () => {
+            this.isFeedbackPlaying = false;
+          });
           }
         },
         selectCycle(index) {
+          this.audioInitial && this.audioInitial.pause();
           this.selectedCycle = this.cycles[index];
+          this.audio = new Audio(`audios/lab02_audio-pregunta-${this.selectedCycle.code}.mp3`);
+          setTimeout(() => {
+            this.playPromise = this.audio.play();
+          }, 500);
+          
 
           this.orderedCycle = {...this.selectedCycle};
           this.orderedCycle.cycle = [...this.selectedCycle.cycle].sort(function (a, b) {
@@ -180,18 +227,49 @@
           this.$forceUpdate();
 
         },
-        cleanActivity(goBack) {
-
-          $('#activity200-modal').modal('hide');
+        cleanActivity(goBack, audio) {
+          this.audio && this.audio.pause();
+          this.audioFeedback && this.audioFeedback.pause();
+          this.audioButtons && this.audioButtons.pause();
+          this.showFeedback = false;
           this.selectedCycle.cycle.forEach((element, index) => {
             element.placed = false;
-
           });
+          
           if (goBack) {
             this.selectedCycle = {};
           }
           this.$forceUpdate();
-        }
+        },
+        buttonSound(audio) {
+          if(!this.isPlaying){
+            this.audioButtons && this.audioButtons.pause();
+            this.audioButtons = new Audio(`audios/lab02_audio-${audio}.mp3`);
+            this.audioButtons.play();
+            this.isPlaying = true;
+          }
+          
+
+          this.audioButtons.removeEventListener("ended", () => {});
+          this.audioButtons.addEventListener("ended", () => {
+            this.isPlaying = false;
+          });
+
+        },
+        debounce(func, wait, immediate) {
+          var timeout;
+          return function() {
+            var context = this, args = arguments;
+            var later = function() {
+              timeout = null;
+              if (!immediate) func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+          };
+        },
       },
     });
   </script>

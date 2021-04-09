@@ -87,7 +87,7 @@ const activity101 = {
           name: 'Delfín',
           image: 'images/lab1/lab01-icon-delfin.svg',
           isCorrect: true,
-          feedback: 'Sabías que los delfines respiran por los pulmones, no tienen branquias como otros seres que viven en el mar.',
+          feedback: '¿Sabías que los delfines respiran por los pulmones, no tienen branquias como otros seres que viven en el mar?',
           audio: 'audios/02-feedback-delfin.mp3',
         },
         {
